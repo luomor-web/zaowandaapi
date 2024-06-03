@@ -2,6 +2,7 @@
 mvn package
 cp siival-system/target/siival-system-2.6.jar docker/lillia-fe/lillia.jar
 cp docker/lillia/Dockerfile docker/lillia-fe/
+cp docker/lillia/application.yml docker/lillia-fe/
 cd docker/
 
 sudo docker-compose build
