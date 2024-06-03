@@ -13,11 +13,11 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package com/siival/bot/modules/bsc.service.mapstruct;
+package com.siival.bot.modules.bsc.service.mapstruct;
 
 import com.siival.bot.base.BaseMapper;
-import com/siival/bot/modules/bsc.domain.QuestionTodayAnswer;
-import com/siival/bot/modules/bsc.service.dto.QuestionTodayAnswerDto;
+import com.siival.bot.modules.bsc.domain.QuestionTodayAnswer;
+import com.siival.bot.modules.bsc.service.dto.QuestionTodayAnswerDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

@@ -13,19 +13,19 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package com/siival/bot/modules/bsc.service.impl;
+package com.siival.bot.modules.bsc.service.impl;
 
-import com/siival/bot/modules/bsc.domain.QuestionTodayAnswer;
+import com.siival.bot.modules.bsc.domain.QuestionTodayAnswer;
 import com.siival.bot.utils.FileUtil;
 import com.siival.bot.utils.PageUtil;
 import com.siival.bot.utils.QueryHelp;
 import com.siival.bot.utils.ValidationUtil;
 import lombok.RequiredArgsConstructor;
-import com/siival/bot/modules/bsc.repository.QuestionTodayAnswerRepository;
-import com/siival/bot/modules/bsc.service.QuestionTodayAnswerService;
-import com/siival/bot/modules/bsc.service.dto.QuestionTodayAnswerDto;
-import com/siival/bot/modules/bsc.service.dto.QuestionTodayAnswerQueryCriteria;
-import com/siival/bot/modules/bsc.service.mapstruct.QuestionTodayAnswerMapper;
+import com.siival.bot.modules.bsc.repository.QuestionTodayAnswerRepository;
+import com.siival.bot.modules.bsc.service.QuestionTodayAnswerService;
+import com.siival.bot.modules.bsc.service.dto.QuestionTodayAnswerDto;
+import com.siival.bot.modules.bsc.service.dto.QuestionTodayAnswerQueryCriteria;
+import com.siival.bot.modules.bsc.service.mapstruct.QuestionTodayAnswerMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;

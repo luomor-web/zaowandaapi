@@ -13,9 +13,9 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package com/siival/bot/modules/bsc.repository;
+package com.siival.bot.modules.bsc.repository;
 
-import com/siival/bot/modules/bsc.domain.QuestionTodayAnswer;
+import com.siival.bot.modules.bsc.domain.QuestionTodayAnswer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

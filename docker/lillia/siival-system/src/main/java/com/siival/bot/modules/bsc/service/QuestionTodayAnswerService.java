@@ -13,11 +13,11 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package com/siival/bot/modules/bsc.service;
+package com.siival.bot.modules.bsc.service;
 
-import com/siival/bot/modules/bsc.domain.QuestionTodayAnswer;
-import com/siival/bot/modules/bsc.service.dto.QuestionTodayAnswerDto;
-import com/siival/bot/modules/bsc.service.dto.QuestionTodayAnswerQueryCriteria;
+import com.siival.bot.modules.bsc.domain.QuestionTodayAnswer;
+import com.siival.bot.modules.bsc.service.dto.QuestionTodayAnswerDto;
+import com.siival.bot.modules.bsc.service.dto.QuestionTodayAnswerQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import java.util.Map;
 import java.util.List;

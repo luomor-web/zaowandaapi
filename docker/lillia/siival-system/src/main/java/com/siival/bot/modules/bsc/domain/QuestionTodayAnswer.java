@@ -13,7 +13,7 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package com/siival/bot/modules/bsc.domain;
+package com.siival.bot.modules.bsc.domain;
 
 import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
