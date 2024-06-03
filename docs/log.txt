@@ -10,3 +10,59 @@ hint: You can replace "git config" with "git config --global" to set a default
 hint: preference for all repositories. You can also pass --rebase, --no-rebase,
 hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
+
+show tables;
++------------------------+
+| Tables_in_lillia       |
++------------------------+
+| code_column_config     |
+| code_gen_config        |
+| exam_info              |
+| exam_menu              |
+| mnt_app                |
+| mnt_database           |
+| mnt_deploy             |
+| mnt_deploy_history     |
+| mnt_deploy_server      |
+| mnt_server             |
+| question_info          |
+| question_menu          |
+| question_today         |
+| question_today_answer  |
+| sys_dept               |
+| sys_dict               |
+| sys_dict_detail        |
+| sys_job                |
+| sys_log                |
+| sys_menu               |
+| sys_quartz_job         |
+| sys_quartz_log         |
+| sys_role               |
+| sys_roles_depts        |
+| sys_roles_menus        |
+| sys_setting            |
+| sys_token              |
+| sys_user               |
+| sys_users_jobs         |
+| sys_users_roles        |
+| sys_wheel_info         |
+| tg_bot_info            |
+| tool_alipay_config     |
+| tool_email_config      |
+| tool_items             |
+| tool_local_storage     |
+| tool_qiniu_config      |
+| tool_qiniu_content     |
+| user_correct_question  |
+| user_exam_score        |
+| user_export_log        |
+| user_favorite_question |
+| user_info              |
+| user_integral_log      |
+| user_invite_log        |
+| user_sign_log          |
+| user_wheel_log         |
+| user_wrong_question    |
+| wx_app                 |
+| wx_user                |
++------------------------+

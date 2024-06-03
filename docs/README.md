@@ -15,6 +15,10 @@ lillia123456
 CREATE DATABASE lillia CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 mysql -h127.0.0.1 -uroot -p -P 3310 lillia < ./sql/test.sql
 
+mysql -h127.0.0.1 -uroot -p -P 3310
+use lillia
+show tables;
+
 sudo docker exec -it lillia-fe bash
 git add lillia/views/
 git add lillia/siival-system/

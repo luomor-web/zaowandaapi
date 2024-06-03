@@ -28,6 +28,24 @@ cp -r docker/lillia/views/wx/user/*.js ../eladmin-web/src/api
 mkdir -p ../eladmin-web/src/views/user/info
 cp -r docker/lillia/views/user/info/index.vue ../eladmin-web/src/views/user/info
 cp -r docker/lillia/views/user/info/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/user/sign
+cp -r docker/lillia/views/user/sign/index.vue ../eladmin-web/src/views/user/sign
+cp -r docker/lillia/views/user/sign/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/user/invite
+cp -r docker/lillia/views/user/invite/index.vue ../eladmin-web/src/views/user/invite
+cp -r docker/lillia/views/user/invite/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/user/integral
+cp -r docker/lillia/views/user/integral/index.vue ../eladmin-web/src/views/user/integral
+cp -r docker/lillia/views/user/integral/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/question/exportq
+cp -r docker/lillia/views/question/exportq/index.vue ../eladmin-web/src/views/question/exportq
+cp -r docker/lillia/views/question/exportq/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/wx/app
+cp -r docker/lillia/views/wx/app/index.vue ../eladmin-web/src/views/wx/app
+cp -r docker/lillia/views/wx/app/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/system/token
+cp -r docker/lillia/views/system/token/index.vue ../eladmin-web/src/views/system/token
+cp -r docker/lillia/views/system/token/*.js ../eladmin-web/src/api
 cd ../eladmin-web
 git add .
 git commit -a -m 'update'
