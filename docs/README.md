@@ -19,9 +19,14 @@ sudo docker exec -it lillia-fe bash
 git add lillia/question/
 git add lillia/siival-system/
 
+git add docker/lillia
+
 mkdir -p ../eladmin-web/src/views/question/today
 cp -r docker/lillia/question/today/index.vue ../eladmin-web/src/views/question/today
-cp -r docker/lillia/question/today/questionTodayAnswer.js ../eladmin-web/src/api
+cp -r docker/lillia/question/today/questionToday.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/question/todayAnswer
+cp -r docker/lillia/question/todayAnswer/index.vue ../eladmin-web/src/views/question/todayAnswer
+cp -r docker/lillia/question/todayAnswer/questionTodayAnswer.js ../eladmin-web/src/api
 
 CREATE DATABASE siival_admin CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 java -jar siival-system-2.6.jar
