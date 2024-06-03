@@ -47,6 +47,7 @@ services:
       - ./lillia/logs:/logs
       - ./lillia/backup:/backup
       - ./lillia/question:/question
+      - ./lillia/siival-system:/siival-system
       - /etc/localtime:/etc/localtime
     depends_on:
       - lillia-mysql80

@@ -15,7 +15,7 @@ lillia123456
 CREATE DATABASE lillia CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 mysql -h127.0.0.1 -uroot -p -P 3310 lillia < ./sql/test.sql
 
-docker exec -it lillia-fe bash
+sudo docker exec -it lillia-fe bash
 
 CREATE DATABASE siival_admin CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 java -jar siival-system-2.6.jar
