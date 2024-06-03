@@ -13,16 +13,10 @@
           <el-form-item label="题目id" prop="qid">
             <el-input v-model="form.qid" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="获得积分">
+          <el-form-item label="答对获得积分">
             <el-input v-model="form.integral" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="用户id" prop="uid">
-            <el-input v-model="form.uid" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="用户答案" prop="userAnswer">
-            <el-input v-model="form.userAnswer" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="0-答错, 1-答对">
+          <el-form-item label="0-禁用, 1-启用">
             <el-input v-model="form.status" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="创建时间" prop="createTime">
@@ -42,13 +36,11 @@
         <el-table-column type="selection" width="55" />
         <el-table-column prop="id" label="id" />
         <el-table-column prop="qid" label="题目id" />
-        <el-table-column prop="integral" label="获得积分" />
-        <el-table-column prop="uid" label="用户id" />
-        <el-table-column prop="userAnswer" label="用户答案" />
-        <el-table-column prop="status" label="0-答错, 1-答对" />
+        <el-table-column prop="integral" label="答对获得积分" />
+        <el-table-column prop="status" label="0-禁用, 1-启用" />
         <el-table-column prop="createTime" label="创建时间" />
         <el-table-column prop="updateTime" label="更新时间" />
-        <el-table-column v-if="checkPer(['admin','questionTodayAnswer:edit','questionTodayAnswer:del'])" label="操作" width="150px" align="center">
+        <el-table-column v-if="checkPer(['admin','questionToday:edit','questionToday:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
               :data="scope.row"
@@ -64,37 +56,31 @@
 </template>
 
 <script>
-import crudQuestionTodayAnswer from '@/api/questionTodayAnswer'
+import crudQuestionToday from '@/api/questionToday'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { id: null, qid: null, integral: null, uid: null, userAnswer: null, status: null, createTime: null, updateTime: null }
+const defaultForm = { id: null, qid: null, integral: null, status: null, createTime: null, updateTime: null }
 export default {
-  name: 'QuestionTodayAnswer',
+  name: 'QuestionToday',
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
-    return CRUD({ title: '每日一题答题', url: 'bsc/questionTodayAnswer', idField: 'id', sort: 'id,desc', crudMethod: { ...crudQuestionTodayAnswer }})
+    return CRUD({ title: '每日一题', url: 'bsc/questionToday', idField: 'id', sort: 'id,desc', crudMethod: { ...crudQuestionToday }})
   },
   data() {
     return {
       permission: {
-        add: ['admin', 'questionTodayAnswer:add'],
-        edit: ['admin', 'questionTodayAnswer:edit'],
-        del: ['admin', 'questionTodayAnswer:del']
+        add: ['admin', 'questionToday:add'],
+        edit: ['admin', 'questionToday:edit'],
+        del: ['admin', 'questionToday:del']
       },
       rules: {
         qid: [
           { required: true, message: '题目id不能为空', trigger: 'blur' }
-        ],
-        uid: [
-          { required: true, message: '用户id不能为空', trigger: 'blur' }
-        ],
-        userAnswer: [
-          { required: true, message: '用户答案不能为空', trigger: 'blur' }
         ],
         createTime: [
           { required: true, message: '创建时间不能为空', trigger: 'blur' }
