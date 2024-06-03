@@ -46,7 +46,7 @@ services:
       - ./lillia/storage:/storage
       - ./lillia/logs:/logs
       - ./lillia/backup:/backup
-      - ./lillia/question:/question
+      - ./lillia/views:/views
       - ./lillia/siival-system:/siival-system
       - /etc/localtime:/etc/localtime
     depends_on:
