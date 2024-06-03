@@ -25,6 +25,9 @@ cp -r docker/lillia/views/question/correct/*.js ../eladmin-web/src/api
 mkdir -p ../eladmin-web/src/views/wx/user
 cp -r docker/lillia/views/wx/user/index.vue ../eladmin-web/src/views/wx/user
 cp -r docker/lillia/views/wx/user/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/user/info
+cp -r docker/lillia/views/user/info/index.vue ../eladmin-web/src/views/user/info
+cp -r docker/lillia/views/user/info/*.js ../eladmin-web/src/api
 cd ../eladmin-web
 git add .
 git commit -a -m 'update'
