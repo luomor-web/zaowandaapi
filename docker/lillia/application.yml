@@ -171,8 +171,8 @@ file:
   # 文件大小 /M
   maxSize: 100
   avatarMaxSize: 5
-  fileDomain: http://82.157.54.206:8010/file/
-  imageDomain: http://82.157.54.206:8010/avatar/
+  fileDomain: https://xzs.7otech.com/file/
+  imageDomain: https://xzs.7otech.com/avatar/
 
 
 pdf:
