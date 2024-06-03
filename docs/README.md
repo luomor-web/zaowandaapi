@@ -51,3 +51,26 @@ sh spring-boot-simple.sh stop
 #重启
 sh spring-boot-simple.sh restart
 ```
+
+```shell
+#Debian
+apt-get install realpath
+#Ubuntu
+apt-get install realpath
+#Alpine
+apk add coreutils
+#Arch Linux
+pacman -S coreutils
+#Kali Linux
+apt-get install coreutils
+#CentOS
+yum install coreutils
+#Fedora
+dnf install coreutils
+#OS X
+brew install realpath
+#Raspbian
+apt-get install coreutils
+#Docker
+docker run cmd.cat/realpath realpath
+```
