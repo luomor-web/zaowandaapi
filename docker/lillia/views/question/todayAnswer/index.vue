@@ -66,7 +66,7 @@
 <script>
 import crudQuestionTodayAnswer from '@/api/questionTodayAnswer'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
-import rrOperation from '@crud/RR.operation'
+// import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
@@ -74,7 +74,7 @@ import pagination from '@crud/Pagination'
 const defaultForm = { id: null, qid: null, integral: null, uid: null, userAnswer: null, status: null, createTime: null, updateTime: null }
 export default {
   name: 'QuestionTodayAnswer',
-  components: { pagination, crudOperation, rrOperation, udOperation },
+  components: { pagination, crudOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
     return CRUD({ title: '每日一题答题', url: 'bsc/questionTodayAnswer', idField: 'id', sort: 'id,desc', crudMethod: { ...crudQuestionTodayAnswer }})

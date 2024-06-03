@@ -78,7 +78,7 @@
 <script>
 import crudExamInfo from '@/api/examInfo'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
-import rrOperation from '@crud/RR.operation'
+// import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
@@ -86,7 +86,7 @@ import pagination from '@crud/Pagination'
 const defaultForm = { id: null, examName: null, status: null, createTime: null, updateTime: null, fileLabel: null, fileSize: null, version: null, pid: null, tempId: null, fileType: null }
 export default {
   name: 'ExamInfo',
-  components: { pagination, crudOperation, rrOperation, udOperation },
+  components: { pagination, crudOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
     return CRUD({ title: '试卷管理', url: 'bsc/examInfo', idField: 'id', sort: 'id,desc', crudMethod: { ...crudExamInfo }})
