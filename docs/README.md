@@ -19,6 +19,7 @@ sudo docker exec -it lillia-fe bash
 git add lillia/views/
 git add lillia/siival-system/
 
+git pull
 git add docker/lillia
 git commit -a -m 'update'
 git push -u origin master
