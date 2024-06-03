@@ -7,7 +7,10 @@ cd docker/
 
 sudo docker-compose build
 sudo docker-compose up -d
+sudo docker-compose up logs -f
 
+mysql -h127.0.0.1 -uroot -p -P 3310
+lillia123456
 CREATE DATABASE lillia CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 
 CREATE DATABASE siival_admin CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
