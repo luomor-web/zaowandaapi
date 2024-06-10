@@ -3,6 +3,13 @@ server:
 
 debug: true
 
+logging:
+  level:
+    com:
+      siival: debug
+    org:
+      springframework: debug
+
 spring:
   freemarker:
     check-template-location: false
