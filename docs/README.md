@@ -18,6 +18,7 @@ mysql -h127.0.0.1 -uroot -p -P 3310 lillia < ./sql/test.sql
 mysql -h127.0.0.1 -uroot -p -P 3310
 use lillia
 show tables;
+insert into wx_app(app_id,app_secret,create_time) values ('wx4a331a648d210360','56c9088a3c2c0bd17d57ba7ec1654310',now());
 
 sudo docker exec -it lillia-fe bash
 git add lillia/views/

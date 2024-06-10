@@ -1,6 +1,8 @@
 server:
   port: 8000
 
+debug: true
+
 spring:
   freemarker:
     check-template-location: false
