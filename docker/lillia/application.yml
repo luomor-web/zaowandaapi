@@ -5,10 +5,8 @@ debug: true
 
 logging:
   level:
-    com:
-      siival: DEBUG
-    org:
-      springframework: DEBUG
+    com.siival: debug
+    org.springframework.security: debug
 
 spring:
   freemarker:
