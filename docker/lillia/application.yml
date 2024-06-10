@@ -6,9 +6,9 @@ debug: true
 logging:
   level:
     com:
-      siival: debug
+      siival: DEBUG
     org:
-      springframework: debug
+      springframework: DEBUG
 
 spring:
   freemarker:

@@ -1,4 +1,5 @@
 ```shell
+git pull
 mvn clean package
 cp siival-system/target/siival-system-2.6.jar docker/lillia-fe/lillia.jar
 cp docker/lillia/Dockerfile docker/lillia-fe/
@@ -9,6 +10,8 @@ sudo docker-compose build
 sudo docker-compose up -d
 sudo docker-compose up down
 sudo docker-compose logs -f
+
+tail -f lillia/logs/*
 
 mysql -h127.0.0.1 -uroot -p -P 3310
 lillia123456
