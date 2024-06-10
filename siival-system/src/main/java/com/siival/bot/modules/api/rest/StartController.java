@@ -28,8 +28,8 @@ public class StartController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/init")
-    public R initSystemInfo(BaseReq req ){
-        logger.info("uid init once:{}",req.getUid());
+    public R initSystemInfo(BaseReq req) {
+        logger.info("uid init once:{}", req.getUid());
         return R.success(systemInitService.getSystemInitInfo());
     }
 }

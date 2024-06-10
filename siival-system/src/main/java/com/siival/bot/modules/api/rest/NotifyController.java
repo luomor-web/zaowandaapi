@@ -1,5 +1,6 @@
 package com.siival.bot.modules.api.rest;
 
+import com.siival.bot.annotation.rest.AnonymousPostMapping;
 import com.siival.bot.modules.api.req.BaseReq;
 import com.siival.bot.modules.api.resp.NotifyInfo;
 import com.siival.bot.resp.R;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/weixin/api/notify")
 public class NotifyController {
 
-    @PostMapping("/info")
+    @AnonymousPostMapping("/info")
     public R getUserCurrentNotify(BaseReq req) {
         NotifyInfo ni = new NotifyInfo();
         ni.setId(1);
