@@ -185,10 +185,10 @@ file:
 pdf:
   export:
     author: Mark
-    subject: 早晚答题
-    keyword: 小程序早晚答
+    subject: 海豚答题助手题
+    keyword: 小程序海豚答题助手
     creator: mark
     slogan:  美好生活，你我一起
-    water-mark: 早晚答
+    water-mark: 海豚答题助手
     password:
     barcode: http://image.siival.com/zaowandabarcode.jpg
