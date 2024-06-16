@@ -21,6 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.copier.CopyOptions;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import org.hibernate.annotations.DynamicInsert;
+
 import java.io.Serializable;
 
 /**
@@ -32,6 +35,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "lillia_file_batch")
+@DynamicInsert
 public class LilliaFileBatch implements Serializable {
 
     @Id

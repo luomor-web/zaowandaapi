@@ -21,6 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.copier.CopyOptions;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import org.hibernate.annotations.DynamicInsert;
+
 import java.io.Serializable;
 
 /**
@@ -32,6 +35,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name="lillia_file")
+@DynamicInsert
 public class LilliaFile implements Serializable {
 
     @Id
@@ -76,57 +80,46 @@ public class LilliaFile implements Serializable {
     private Integer fileCtime;
 
     @Column(name = "file_cdate",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "fileCdate")
     private Integer fileCdate;
 
     @Column(name = "file_utime",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "fileUtime")
     private Integer fileUtime;
 
     @Column(name = "read_ret",nullable = false)
-    @NotBlank
     @ApiModelProperty(value = "readRet")
     private String readRet;
 
     @Column(name = "status",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "status")
     private Integer status;
 
     @Column(name = "read_status",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "readStatus")
     private Integer readStatus;
 
     @Column(name = "flag",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "flag")
     private Long flag;
 
     @Column(name = "operator_id",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "operatorId")
     private Integer operatorId;
 
     @Column(name = "operator",nullable = false)
-    @NotBlank
     @ApiModelProperty(value = "operator")
     private String operator;
 
     @Column(name = "comment",nullable = false)
-    @NotBlank
     @ApiModelProperty(value = "comment")
     private String comment;
 
     @Column(name = "create_time",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "createTime")
     private Integer createTime;
 
     @Column(name = "update_time",nullable = false)
-    @NotNull
     @ApiModelProperty(value = "updateTime")
     private Integer updateTime;
 
