@@ -51,8 +51,8 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     private final QuestionMenuMapper questionMenuMapper;
 
     @Override
-    public Map<String,Object> queryAll(QuestionMenuQueryCriteria criteria, Pageable pageable){
-        Page<QuestionMenu> page = questionMenuRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
+    public Map<String,Object> queryAll(QuestionMenuQueryCriteria criteria, Pageable pageable) {
+        Page<QuestionMenu> page = questionMenuRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder), pageable);
         return PageUtil.toPage(page.map(questionMenuMapper::toDto));
     }
 

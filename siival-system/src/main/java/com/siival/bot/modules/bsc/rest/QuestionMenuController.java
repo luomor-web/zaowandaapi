@@ -38,10 +38,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 /**
-* @website
-* @author mark
-* @date 2022-01-17
-**/
+ * @website
+ * @author mark
+ * @date 2022-01-17
+ **/
 @RestController
 @RequiredArgsConstructor
 @Api(tags = "题目分类管理")
@@ -54,7 +54,8 @@ public class QuestionMenuController {
     @ApiOperation("导出数据")
     @GetMapping(value = "/download")
     @PreAuthorize("@el.check('questionMenu:list')")
-    public void exportQuestionMenu(HttpServletResponse response, QuestionMenuQueryCriteria criteria) throws IOException {
+    public void exportQuestionMenu(HttpServletResponse response, QuestionMenuQueryCriteria criteria)
+            throws IOException {
         questionMenuService.download(questionMenuService.queryAll(criteria), response);
     }
 
@@ -62,28 +63,28 @@ public class QuestionMenuController {
     @Log("查询题目分类")
     @ApiOperation("查询题目分类")
     @PreAuthorize("@el.check('questionMenu:list')")
-    public ResponseEntity<Object> queryQuestionMenu(QuestionMenuQueryCriteria criteria, Pageable pageable){
-        if (criteria.getPid()==null && criteria.getId()==null) {
+    public ResponseEntity<Object> queryQuestionMenu(QuestionMenuQueryCriteria criteria, Pageable pageable) {
+        if (criteria.getPid() == null && criteria.getId() == null) {
             criteria.setPid(0);
         }
         List<QuestionMenuDto> list = questionMenuService.queryAll(criteria);
-        return new ResponseEntity<>( PageUtil.toPage(list,list.size()) , HttpStatus.OK);
+        return new ResponseEntity<>(PageUtil.toPage(list, list.size()), HttpStatus.OK);
     }
 
     @PostMapping
     @Log("新增题目分类")
     @ApiOperation("新增题目分类")
     @PreAuthorize("@el.check('questionMenu:add')")
-    public ResponseEntity<Object> createQuestionMenu(@Validated @RequestBody QuestionMenu resources){
+    public ResponseEntity<Object> createQuestionMenu(@Validated @RequestBody QuestionMenu resources) {
 
-        return new ResponseEntity<>(questionMenuService.create(resources),HttpStatus.CREATED);
+        return new ResponseEntity<>(questionMenuService.create(resources), HttpStatus.CREATED);
     }
 
     @PutMapping
     @Log("修改题目分类")
     @ApiOperation("修改题目分类")
     @PreAuthorize("@el.check('questionMenu:edit')")
-    public ResponseEntity<Object> updateQuestionMenu(@Validated @RequestBody QuestionMenu resources){
+    public ResponseEntity<Object> updateQuestionMenu(@Validated @RequestBody QuestionMenu resources) {
         questionMenuService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -93,8 +94,8 @@ public class QuestionMenuController {
     @ApiOperation("删除题目分类")
     @PreAuthorize("@el.check('questionMenu:del')")
     public ResponseEntity<Object> deleteQuestionMenu(@RequestBody Integer[] ids) {
-        //questionMenuService.deleteAll(ids);
-        //DO NOTHING
+        // questionMenuService.deleteAll(ids);
+        // DO NOTHING
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
