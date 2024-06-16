@@ -54,26 +54,26 @@ public class LilliaFile1Controller {
     @Log("添加批次上传")
     @ApiOperation("添加批次上传")
     @PostMapping("/addWithBatch")
-    public Object addWithBatch(@RequestBody String body) {
+    public ResponseEntity<Object> addWithBatch(@RequestBody String body) {
         Map<String, String> data = JacksonUtil.toMap(body);
         if(data == null) {
-            return R.error(410, "data");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         LilliaFileDto lilliaFile = lilliaFileService.addWithBatch(data);
-        return R.success(lilliaFile);
+        return new ResponseEntity<>(lilliaFile, HttpStatus.CREATED);
     }
 
     @PreAuthorize("@el.check('lilliaFile:list')")
     @Log("删除批次上传")
     @ApiOperation("删除批次上传")
     @PostMapping("/deleteWithBatch")
-    public Object deleteWithBatch(@RequestBody String body) {
+    public ResponseEntity<Object> deleteWithBatch(@RequestBody String body) {
         Map<String, String> data = JacksonUtil.toMap(body);
         if(data == null) {
-            return R.error(410, "data");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         LilliaFileDto lilliaFile = lilliaFileService.deleteWithBatch(data);
-        return R.success(lilliaFile);
+        return new ResponseEntity<>(lilliaFile, HttpStatus.CREATED);
     }
 
     @Log("导出数据")
