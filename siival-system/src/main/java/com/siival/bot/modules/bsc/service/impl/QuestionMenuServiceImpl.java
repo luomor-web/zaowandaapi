@@ -41,11 +41,11 @@ import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
 /**
-* @website
-* @description 服务实现
-* @author mark
-* @date 2022-01-17
-**/
+ * @website
+ * @description 服务实现
+ * @author mark
+ * @date 2022-01-17
+ **/
 @Service
 @RequiredArgsConstructor
 public class QuestionMenuServiceImpl implements QuestionMenuService {
@@ -56,19 +56,22 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     private final RedisUtils redisUtils;
 
     @Override
-    public Map<String,Object> queryAll(QuestionMenuQueryCriteria criteria, Pageable pageable){
-        Page<QuestionMenu> page = questionMenuRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
+    public Map<String, Object> queryAll(QuestionMenuQueryCriteria criteria, Pageable pageable) {
+        Page<QuestionMenu> page = questionMenuRepository.findAll(
+                (root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder),
+                pageable);
         return PageUtil.toPage(page.map(questionMenuMapper::toDto));
     }
 
     @Override
-    public List<QuestionMenuDto> queryAll(QuestionMenuQueryCriteria criteria){
+    public List<QuestionMenuDto> queryAll(QuestionMenuQueryCriteria criteria) {
 
-        List<QuestionMenuDto> list = questionMenuMapper.toDto(questionMenuRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder)));
-        if (list!=null) {
-            return list.stream().map(s->{
-               s.setHasChildren(findMenuChildrenCount(s.getId())>0);
-               return s;
+        List<QuestionMenuDto> list = questionMenuMapper.toDto(questionMenuRepository.findAll(
+                (root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder)));
+        if (list != null) {
+            return list.stream().map(s -> {
+                s.setHasChildren(findMenuChildrenCount(s.getId()) > 0);
+                return s;
             }).collect(Collectors.toList());
         }
         return new ArrayList<>();
@@ -78,7 +81,7 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     @Transactional
     public QuestionMenuDto findById(Integer id) {
         QuestionMenu questionMenu = questionMenuRepository.findById(id).orElseGet(QuestionMenu::new);
-        ValidationUtil.isNull(questionMenu.getId(),"QuestionMenu","id",id);
+        ValidationUtil.isNull(questionMenu.getId(), "QuestionMenu", "id", id);
         return questionMenuMapper.toDto(questionMenu);
     }
 
@@ -93,7 +96,7 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     @Transactional(rollbackFor = Exception.class)
     public void update(QuestionMenu resources) {
         QuestionMenu questionMenu = questionMenuRepository.findById(resources.getId()).orElseGet(QuestionMenu::new);
-        ValidationUtil.isNull( questionMenu.getId(),"QuestionMenu","id",resources.getId());
+        ValidationUtil.isNull(questionMenu.getId(), "QuestionMenu", "id", resources.getId());
         questionMenu.copy(resources);
         questionMenu.setUpdateTime(TimeUtils.getCurrentTimestamp());
         questionMenuRepository.save(questionMenu);
@@ -110,7 +113,7 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     public void download(List<QuestionMenuDto> all, HttpServletResponse response) throws IOException {
         List<Map<String, Object>> list = new ArrayList<>();
         for (QuestionMenuDto questionMenu : all) {
-            Map<String,Object> map = new LinkedHashMap<>();
+            Map<String, Object> map = new LinkedHashMap<>();
             map.put("题目", questionMenu.getName());
             map.put("是否启用", questionMenu.getStatus());
             map.put("创建时间", questionMenu.getCreateTime());
@@ -122,22 +125,23 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
 
     @Override
     public List<CategoryInfo> getEnableMenuInfo(Integer pid) {
-        Object obj  = redisUtils.get(RedisKeyConstant.QUESTION_MENU_INFO);
+        Object obj = redisUtils.get(RedisKeyConstant.QUESTION_MENU_INFO);
         List<CategoryInfo> list = null;
         if (obj == null) {
             list = getAllEnableMenuInfoFromDb(pid);
             redisUtils.set(RedisKeyConstant.QUESTION_MENU_INFO, JSONUtil.toJsonStr(list));
-        }else{
+        } else {
             JSONArray array = JSONUtil.parseArray(obj.toString());
-            list = JSONUtil.toList(array,CategoryInfo.class);
+            list = JSONUtil.toList(array, CategoryInfo.class);
         }
         return list;
     }
 
     @Override
     public List<CategoryInfo> getAllEnableMenuInfoFromDb(Integer pid) {
-        List<QuestionMenu> menuList = questionMenuRepository.findByStatusAndPidOrderBySortAsc(CommonStatusEnum.ENABLE.getKey(), pid);
-        return menuList==null?null:menuList.stream().map(s->{
+        List<QuestionMenu> menuList = questionMenuRepository
+                .findByStatusAndPidOrderBySortAsc(CommonStatusEnum.ENABLE.getKey(), pid);
+        return menuList == null ? null : menuList.stream().map(s -> {
             CategoryInfo ci = new CategoryInfo();
             ci.setId(s.getId());
             ci.setName(s.getName());
@@ -150,7 +154,7 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     @Override
     public List<CategoryInfo> getAllMenuInfoFromDb(Integer pid) {
         List<QuestionMenu> menuList = questionMenuRepository.findByPidOrderBySortAsc(pid);
-        return menuList==null?null:menuList.stream().map(s->{
+        return menuList == null ? null : menuList.stream().map(s -> {
             CategoryInfo ci = new CategoryInfo();
             ci.setId(s.getId());
             ci.setName(s.getName());
@@ -167,10 +171,10 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
 
     @Override
     public void syncMenuInfo() {
-        List<CategoryInfo> list =  getAllEnableMenuInfoFromDb(0);
+        List<CategoryInfo> list = getAllEnableMenuInfoFromDb(0);
         redisUtils.set(RedisKeyConstant.QUESTION_MENU_INFO, JSONUtil.toJsonStr(list));
         Object obj = redisUtils.get(RedisKeyConstant.QUESTION_MENU_REFRESH);
-        obj = obj==null?"0":obj;
+        obj = obj == null ? "0" : obj;
         Integer val = Integer.valueOf(obj.toString());
         val++;
         redisUtils.set(RedisKeyConstant.QUESTION_MENU_REFRESH, val.toString());

@@ -20,16 +20,18 @@ import java.util.List;
 import com.siival.bot.annotation.Query;
 
 /**
-* @website
-* @author mark
-* @date 2022-02-12
-**/
+ * @website
+ * @author mark
+ * @date 2022-02-12
+ **/
 @Data
-public class QuestionInfoQueryCriteria{
+public class QuestionInfoQueryCriteria {
 
     /** 精确 */
     @Query
     private Integer pid;
+    @Query
+    private String question;
     @Query
     private Integer status;
 }
