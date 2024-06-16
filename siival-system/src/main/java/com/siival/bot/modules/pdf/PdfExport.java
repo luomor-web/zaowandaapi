@@ -22,12 +22,12 @@ public class PdfExport {
 
 	// main测试
 	public static void main(String[] args) throws Exception {
-		String title = "早晚答";
+		String title = "海豚答题助手";
 		String author = "Mark";
-		String subject = "早晚答题";
+		String subject = "海豚答题助手题";
 		String keyword = "小程序，答题";
 		String creator = "markjava@qq.com";
-		String waterMark= "早晚答";
+		String waterMark= "海豚答题助手";
 		String outputFileName = "E:\\tiku\\PDFDemo.pdf";
 		PdfExportConfig config = new PdfExportConfig();
 //		config.setPassword("123456");

@@ -31,14 +31,14 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
-* @website
-* @description /
-* @author mark
-* @date 2022-02-12
-**/
+ * @website
+ * @description /
+ * @author mark
+ * @date 2022-02-12
+ **/
 @Entity
 @Data
-@Table(name="question_info")
+@Table(name = "question_info")
 @TypeDef(name = "json", typeClass = JsonStringType.class)
 public class QuestionInfo implements Serializable {
 
@@ -48,17 +48,17 @@ public class QuestionInfo implements Serializable {
     @ApiModelProperty(value = "id")
     private Integer id;
 
-    @Column(name = "type",nullable = false)
+    @Column(name = "type", nullable = false)
     @NotNull
     @ApiModelProperty(value = "问题类型")
     private Integer type;
 
-    @Column(name = "multiply",nullable = false)
+    @Column(name = "multiply", nullable = false)
     @NotNull
     @ApiModelProperty(value = "是否多选")
     private Integer multiply;
 
-    @Column(name = "pid",nullable = false)
+    @Column(name = "pid", nullable = false)
     @NotNull
     @ApiModelProperty(value = "上级分类")
     private Integer pid;
@@ -75,7 +75,7 @@ public class QuestionInfo implements Serializable {
     @ApiModelProperty(value = "答案解析")
     private String analysis;
 
-    @Column(name = "status",nullable = false)
+    @Column(name = "status", nullable = false)
     @NotNull
     @ApiModelProperty(value = "是否启用")
     private Integer status;
@@ -93,7 +93,7 @@ public class QuestionInfo implements Serializable {
     @ApiModelProperty(value = "选项列表")
     private List<SelectListInfo> selectList;
 
-    public void copy(QuestionInfo source){
-        BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
+    public void copy(QuestionInfo source) {
+        BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }
