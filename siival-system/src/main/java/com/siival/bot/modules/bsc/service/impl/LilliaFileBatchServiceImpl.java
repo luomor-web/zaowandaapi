@@ -84,6 +84,25 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
         lilliaFileBatchRepository.save(lilliaFileBatch);
     }
 
+    public void reduceNumById(LilliaFileBatch lilliaFileBatch, Long lilliaFileBatchId) {
+        LilliaFileBatchDto dbLilliaFileBatchDto = this.findById(lilliaFileBatchId);
+        int removeNum = 0;
+        int num = 0;
+        if(dbLilliaFileBatchDto == null) {
+            removeNum = 1;
+        } else {
+            removeNum = dbLilliaFileBatchDto.getUploadRemoveNum() + 1;
+            num = dbLilliaFileBatchDto.getNum() - 1;
+        }
+        if(num < 0) {
+            num = 0;
+        }
+        lilliaFileBatch.setLilliaFileBatchId(lilliaFileBatchId);
+        lilliaFileBatch.setUploadRemoveNum(removeNum);
+        lilliaFileBatch.setNum(num);
+        this.update(lilliaFileBatch);
+    }
+
     @Override
     public void deleteAll(Long[] ids) {
         for (Long lilliaFileBatchId : ids) {

@@ -80,4 +80,6 @@ public interface LilliaFileBatchService {
     * @throws IOException /
     */
     void download(List<LilliaFileBatchDto> all, HttpServletResponse response) throws IOException;
+
+    public void reduceNumById(LilliaFileBatch lilliaFileBatch, Long lilliaFileBatchId);
 }
