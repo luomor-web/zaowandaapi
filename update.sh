@@ -46,6 +46,16 @@ cp -r docker/lillia/views/wx/app/*.js ../eladmin-web/src/api
 mkdir -p ../eladmin-web/src/views/system/token
 cp -r docker/lillia/views/system/token/index.vue ../eladmin-web/src/views/system/token
 cp -r docker/lillia/views/system/token/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/lillia/fileBatch
+cp -r docker/lillia/views/lillia/fileBatch/index.vue ../eladmin-web/src/views/lillia/fileBatch
+cp -r docker/lillia/views/lillia/fileBatch/*.js ../eladmin-web/src/api
+mkdir -p ../eladmin-web/src/views/lillia/file
+cp -r docker/lillia/views/lillia/file/index.vue ../eladmin-web/src/views/lillia/file
+cp -r docker/lillia/views/lillia/file/*.js ../eladmin-web/src/api
+#cp -r docker/lillia/siival-system/* siival-system/
+#git add .
+#git commit -a -m 'update'
+#git push -u origin master
 cd ../eladmin-web
 git add .
 git commit -a -m 'update'
