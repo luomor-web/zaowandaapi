@@ -1,48 +1,69 @@
 package com.siival.bot.modules.bsc.task;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.siival.bot.modules.bsc.domain.LilliaFile;
+import com.siival.bot.modules.bsc.domain.LilliaFileBatch;
+import com.siival.bot.modules.bsc.service.LilliaFileBatchService;
+import com.siival.bot.modules.bsc.service.LilliaFileService;
+import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchDto;
+import com.siival.bot.modules.bsc.service.dto.LilliaFileDto;
+import com.siival.bot.modules.bsc.service.dto.LilliaFileQueryCriteria;
+import com.siival.bot.modules.bsc.service.file.FileBaseService;
+import com.siival.bot.modules.bsc.service.file.FileServiceBuild;
+import com.siival.bot.modules.bsc.service.impl.LilliaFileBatchServiceImpl;
+import com.siival.bot.modules.bsc.service.impl.LilliaFileServiceImpl;
 import com.siival.bot.task.Task;
 import com.siival.bot.utils.BeanUtil;
+import com.siival.bot.utils.CharUtil;
+import com.siival.bot.utils.RegexUtil;
 
 public class LilliaFileBatchReadTask extends Task {
     private final Log logger = LogFactory.getLog(LilliaFileBatchReadTask.class);
-    private Long ctFileBatchId = -1L;
+    private Long lilliaFileBatchId = -1L;
 
-    public LilliaFileBatchReadTask(Long ctFileBatchId, long delayInMilliseconds) {
-        super("LilliaFileBatchReadTask-" + ctFileBatchId, delayInMilliseconds);
-        this.ctFileBatchId = ctFileBatchId;
+    public LilliaFileBatchReadTask(Long lilliaFileBatchId, long delayInMilliseconds) {
+        super("LilliaFileBatchReadTask-" + lilliaFileBatchId, delayInMilliseconds);
+        this.lilliaFileBatchId = lilliaFileBatchId;
     }
 
-    public LilliaFileBatchReadTask(Long ctFileBatchId) {
-        super("LilliaFileBatchReadTask-" + ctFileBatchId, 0);
-        this.ctFileBatchId = ctFileBatchId;
+    public LilliaFileBatchReadTask(Long lilliaFileBatchId) {
+        super("LilliaFileBatchReadTask-" + lilliaFileBatchId, 0);
+        this.lilliaFileBatchId = lilliaFileBatchId;
     }
 
     @Override
     public void run() {
-        logger.info("读取文件信息---批次读取BEGIN---" + this.ctFileBatchId);
+        logger.info("读取文件信息---批次读取BEGIN---" + this.lilliaFileBatchId);
 
         // read image
-        CtFileBatchService ctFileBatchService = BeanUtil.getBean(CtFileBatchService.class);
-        CtFileService ctFileService = BeanUtil.getBean(CtFileService.class);
+        LilliaFileBatchService lilliaFileBatchService = BeanUtil.getBean(LilliaFileBatchServiceImpl.class);
+        LilliaFileService lilliaFileService = BeanUtil.getBean(LilliaFileServiceImpl.class);
 
         FileBaseService fileBaseService;
 
-        CtFileBatch ctFileBatch = ctFileBatchService.findFileBatch(this.ctFileBatchId);
+        LilliaFileBatchDto lilliaFileBatchDto = lilliaFileBatchService.findById(this.lilliaFileBatchId);
 
-        if(ctFileBatch == null) {
-            logger.info("读取文件信息---批次读取ERR---" + this.ctFileBatchId + "---没有批次信息");
+        if(lilliaFileBatchDto == null) {
+            logger.info("读取文件信息---批次读取ERR---" + this.lilliaFileBatchId + "---没有批次信息");
             return;
         }
-        if(ctFileBatch.getStatus().equals(CtFileBatchService.STATUS_READ)) {
-            logger.info("读取文件信息---批次读取ERR---" + this.ctFileBatchId + "---上传批次读取中，请稍后查看");
+        if(lilliaFileBatchDto.getStatus().equals(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ)) {
+            logger.info("读取文件信息---批次读取ERR---" + this.lilliaFileBatchId + "---上传批次读取中，请稍后查看");
             return;
         }
-        List<CtFile> ctFiles = ctFileService.querySelective(this.ctFileBatchId);
+        LilliaFileQueryCriteria lilliaFileQueryCriteria = new LilliaFileQueryCriteria();
+        lilliaFileQueryCriteria.setLilliaFileBatchId(this.lilliaFileBatchId);
+        List<LilliaFileDto> lilliaFiles = lilliaFileService.queryAll(lilliaFileQueryCriteria);
 
-        CtFile ctFile = null;
+        LilliaFileDto lilliaFileDto = null;
         BufferedInputStream inputStream = null;
         URL url = null;
         FileOutputStream fileOS = null;
@@ -50,8 +71,8 @@ public class LilliaFileBatchReadTask extends Task {
         String suffix = "";
         String userDir = "";
         Long flag = 0L;
-        Byte readStatus = 0;
-        Byte status = 0;
+        Integer readStatus = 0;
+        Integer status = 0;
         int time = 0;
         int date = 0;
 
@@ -61,17 +82,20 @@ public class LilliaFileBatchReadTask extends Task {
         String readRet = "";
 
         try {
-            ctFileBatch.setStatus(CtFileBatchService.STATUS_READ);
-            ctFileBatchService.updateById(ctFileBatch);
+            lilliaFileBatchDto.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ);
+            LilliaFileBatch lilliaFileBatch = new LilliaFileBatch();
+            lilliaFileBatch.setLilliaFileBatchId(this.lilliaFileBatchId);
+            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ);
+            lilliaFileBatchService.update(lilliaFileBatch);
 
-            for(int i = 0 ; i < ctFiles.size() ; i++) {
-                ctFile = ctFiles.get(i);
+            for(int i = 0 ; i < lilliaFiles.size() ; i++) {
+                lilliaFileDto = lilliaFiles.get(i);
 
                 userDir = System.getProperty("user.dir");
-                url = new URL(ctFile.getFilePath());
+                url = new URL(lilliaFileDto.getFilePath());
                 inputStream = new BufferedInputStream(url.openStream());
 
-                suffix = RegexUtil.parseSuffix(ctFile.getFilePath());
+                suffix = RegexUtil.parseSuffix(lilliaFileDto.getFilePath());
                 String fileName = userDir + "/fileName" + CharUtil.getRandomString(6) + "." + suffix;
                 fileOS = new FileOutputStream(fileName);
                 data = new byte[1024];
@@ -81,18 +105,24 @@ public class LilliaFileBatchReadTask extends Task {
                 }
                 File localFile = new File(fileName);
 
-                fileBaseService = FileServiceBuild.buildService(ctFile.getFileType());
+                fileBaseService = FileServiceBuild.buildService(lilliaFileDto.getFileType());
                 fileBaseService.read(localFile);
                 
                 readNum++;
-                status = CtFileService.STATUS_EXCEL;
+                status = com.siival.bot.modules.bsc.service.lillia.LilliaFileService.STATUS_EXCEL;
 
-                ctFile.setStatus(status);
-                ctFile.setReadStatus(readStatus);
-                ctFile.setReadRet(readRet);
-                ctFile.setFlag(flag);
+                lilliaFileDto.setStatus(status);
+                lilliaFileDto.setReadStatus(readStatus);
+                lilliaFileDto.setReadRet(readRet);
+                lilliaFileDto.setFlag(flag);
 
-                ctFileService.updateById(ctFile);
+                LilliaFile lilliaFile = new LilliaFile();
+                lilliaFile.setLilliaFileId(lilliaFileDto.getLilliaFileId());
+                lilliaFile.setStatus(status);
+                lilliaFile.setReadStatus(readStatus);
+                lilliaFile.setReadRet(readRet);
+                lilliaFile.setFlag(flag);
+                lilliaFileService.update(lilliaFile);
 
                 if(localFile.delete()) {
                     logger.info("读取文件信息---批次读取---删除文件成功" + fileName);
@@ -101,33 +131,40 @@ public class LilliaFileBatchReadTask extends Task {
                 }
             }
             if(hasAllRead) {
-                readStatus = CtFileBatchService.READ_STATUS_ALL_DONE;
+                readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.READ_STATUS_ALL_DONE;
                 readRet = "全部读取文件信息";
             } else {
                 if(existData) {
-                    readStatus = CtFileBatchService.READ_STATUS_PART_DONE;
+                    readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.READ_STATUS_PART_DONE;
                     readRet = "部分读取文件信息";
                 } else {
-                    readStatus = CtFileBatchService.READ_STATUS_NO_EXCEL;
+                    readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.READ_STATUS_NO_EXCEL;
                     readRet = "所有文件没有信息";
                 }
             }
             //update ct upload batch
-            ctFileBatch.setReadNum(readNum);
-            ctFileBatch.setReadStatus(readStatus);
-            ctFileBatch.setReadRet(readRet);
-            ctFileBatch.setStatus(CtFileBatchService.STATUS_EXCEL);
-            ctFileBatchService.updateById(ctFileBatch);
+
+            lilliaFileBatch = new LilliaFileBatch();
+            lilliaFileBatch.setLilliaFileBatchId(this.lilliaFileBatchId);
+            lilliaFileBatch.setReadNum(readNum);
+            lilliaFileBatch.setReadStatus(readStatus);
+            lilliaFileBatch.setReadRet(readRet);
+            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ);
+
+            lilliaFileBatchService.update(lilliaFileBatch);
         } catch(Exception e) {
-            ctFileBatch.setReadNum(readNum);
-            ctFileBatch.setReadRet("读取文件错误");
-            ctFileBatch.setStatus(CtFileBatchService.STATUS_READ_ERR);
-            ctFileBatchService.updateById(ctFileBatch);
+            LilliaFileBatch lilliaFileBatch = new LilliaFileBatch();
+            lilliaFileBatch.setLilliaFileBatchId(this.lilliaFileBatchId);
+            lilliaFileBatch.setReadNum(readNum);
+            lilliaFileBatch.setReadRet("读取文件错误");
+            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ_ERR);
+
+            lilliaFileBatchService.update(lilliaFileBatch);
             e.printStackTrace();
             logger.error("读取文件信息---批次读取Exception---" + e.toString(), e);
         }
 
-        logger.info("读取文件信息---批次读取END---" + this.ctFileBatchId);
+        logger.info("读取文件信息---批次读取END---" + this.lilliaFileBatchId);
     }
 }
 

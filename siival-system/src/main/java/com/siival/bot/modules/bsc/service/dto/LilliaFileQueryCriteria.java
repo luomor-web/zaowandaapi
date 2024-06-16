@@ -20,10 +20,12 @@ import java.util.List;
 import com.siival.bot.annotation.Query;
 
 /**
-* @website
-* @author Peter
-* @date 2024-06-16
-**/
+ * @website
+ * @author Peter
+ * @date 2024-06-16
+ **/
 @Data
-public class LilliaFileQueryCriteria{
+public class LilliaFileQueryCriteria {
+    @Query
+    private Long lilliaFileBatchId;
 }
