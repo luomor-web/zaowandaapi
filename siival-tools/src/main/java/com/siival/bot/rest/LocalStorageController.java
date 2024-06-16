@@ -64,8 +64,8 @@ public class LocalStorageController {
     @PreAuthorize("@el.check('storage:add')")
     public ResponseEntity<Object> createFile(@RequestParam(defaultValue = "") String name,
             @RequestParam("file") MultipartFile file) {
-        localStorageService.create(name, file);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        LocalStorage localStorage = localStorageService.create(name, file);
+        return new ResponseEntity<>(localStorage, HttpStatus.CREATED);
     }
 
     @ApiOperation("上传图片")
