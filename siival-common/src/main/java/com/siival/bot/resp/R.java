@@ -44,6 +44,13 @@ public class R {
         return r;
     }
 
+    public static R error(Integer code, String message) {
+        R r = new R();
+        r.setCode(code);
+        r.setMessage(message);
+        return r;
+    }
+
     public static R error(ErrorCodeEnum code) {
         R r = new R();
         r.setCode(code.code());

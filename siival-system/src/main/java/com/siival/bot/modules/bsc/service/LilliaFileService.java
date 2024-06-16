@@ -80,4 +80,8 @@ public interface LilliaFileService {
     * @throws IOException /
     */
     void download(List<LilliaFileDto> all, HttpServletResponse response) throws IOException;
+
+    public LilliaFileDto addWithBatch(Map<String, String> data);
+
+    public LilliaFileDto deleteWithBatch(Map<String, String> data);
 }

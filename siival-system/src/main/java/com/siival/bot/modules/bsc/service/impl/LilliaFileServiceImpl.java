@@ -47,6 +47,16 @@ import java.util.LinkedHashMap;
 @RequiredArgsConstructor
 public class LilliaFileServiceImpl implements LilliaFileService {
 
+    @Override
+    public LilliaFileDto addWithBatch(Map<String, String> data) {
+        return null;
+    }
+
+    @Override
+    public LilliaFileDto deleteWithBatch(Map<String, String> data) {
+        return null;
+    }
+
     private final LilliaFileRepository lilliaFileRepository;
     private final LilliaFileMapper lilliaFileMapper;
 
