@@ -97,7 +97,7 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
         for (LilliaFileBatchDto lilliaFileBatch : all) {
             Map<String,Object> map = new LinkedHashMap<>();
             map.put(" uploadName",  lilliaFileBatch.getUploadName());
-            map.put(" 1- 2-", lilliaFileBatch.getUploadType());
+            map.put(" uploadType",  lilliaFileBatch.getUploadType());
             map.put(" num",  lilliaFileBatch.getNum());
             map.put(" uploadTotalNum",  lilliaFileBatch.getUploadTotalNum());
             map.put(" uploadSuccessNum",  lilliaFileBatch.getUploadSuccessNum());

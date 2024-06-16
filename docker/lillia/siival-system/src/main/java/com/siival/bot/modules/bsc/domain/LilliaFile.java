@@ -31,59 +31,59 @@ import java.io.Serializable;
 **/
 @Entity
 @Data
-@Table(name="lillia_file_batch")
-public class LilliaFileBatch implements Serializable {
+@Table(name="lillia_file")
+public class LilliaFile implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "lillia_file_batch_id")
-    @ApiModelProperty(value = "ID")
+    @Column(name = "lillia_file_id")
+    @ApiModelProperty(value = "lilliaFileId")
+    private Long lilliaFileId;
+
+    @Column(name = "lillia_file_batch_id",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "lilliaFileBatchId")
     private Long lilliaFileBatchId;
 
-    @Column(name = "upload_name",nullable = false)
+    @Column(name = "file_name",nullable = false)
     @NotBlank
-    @ApiModelProperty(value = "uploadName")
-    private String uploadName;
+    @ApiModelProperty(value = "fileName")
+    private String fileName;
 
-    @Column(name = "upload_type",nullable = false)
+    @Column(name = "file_type",nullable = false)
     @NotNull
-    @ApiModelProperty(value = "uploadType")
-    private Integer uploadType;
+    @ApiModelProperty(value = "fileType")
+    private Integer fileType;
 
-    @Column(name = "num",nullable = false)
-    @NotNull
-    @ApiModelProperty(value = "num")
-    private Integer num;
+    @Column(name = "file_path",nullable = false)
+    @NotBlank
+    @ApiModelProperty(value = "filePath")
+    private String filePath;
 
-    @Column(name = "upload_total_num",nullable = false)
-    @NotNull
-    @ApiModelProperty(value = "uploadTotalNum")
-    private Integer uploadTotalNum;
+    @Column(name = "local_path",nullable = false)
+    @NotBlank
+    @ApiModelProperty(value = "localPath")
+    private String localPath;
 
-    @Column(name = "upload_success_num",nullable = false)
-    @NotNull
-    @ApiModelProperty(value = "uploadSuccessNum")
-    private Integer uploadSuccessNum;
+    @Column(name = "file_size",nullable = false)
+    @NotBlank
+    @ApiModelProperty(value = "fileSize")
+    private String fileSize;
 
-    @Column(name = "upload_fail_num",nullable = false)
+    @Column(name = "file_ctime",nullable = false)
     @NotNull
-    @ApiModelProperty(value = "uploadFailNum")
-    private Integer uploadFailNum;
+    @ApiModelProperty(value = "fileCtime")
+    private Integer fileCtime;
 
-    @Column(name = "upload_remove_num",nullable = false)
+    @Column(name = "file_cdate",nullable = false)
     @NotNull
-    @ApiModelProperty(value = "uploadRemoveNum")
-    private Integer uploadRemoveNum;
+    @ApiModelProperty(value = "fileCdate")
+    private Integer fileCdate;
 
-    @Column(name = "un_upload_num",nullable = false)
+    @Column(name = "file_utime",nullable = false)
     @NotNull
-    @ApiModelProperty(value = "unUploadNum")
-    private Integer unUploadNum;
-
-    @Column(name = "read_num",nullable = false)
-    @NotNull
-    @ApiModelProperty(value = "readNum")
-    private Integer readNum;
+    @ApiModelProperty(value = "fileUtime")
+    private Integer fileUtime;
 
     @Column(name = "read_ret",nullable = false)
     @NotBlank
@@ -99,6 +99,11 @@ public class LilliaFileBatch implements Serializable {
     @NotNull
     @ApiModelProperty(value = "readStatus")
     private Integer readStatus;
+
+    @Column(name = "flag",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "flag")
+    private Long flag;
 
     @Column(name = "operator_id",nullable = false)
     @NotNull
@@ -125,7 +130,7 @@ public class LilliaFileBatch implements Serializable {
     @ApiModelProperty(value = "updateTime")
     private Integer updateTime;
 
-    public void copy(LilliaFileBatch source){
+    public void copy(LilliaFile source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

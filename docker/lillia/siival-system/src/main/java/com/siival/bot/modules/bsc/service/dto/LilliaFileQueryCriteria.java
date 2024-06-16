@@ -16,51 +16,14 @@
 package com.siival.bot.modules.bsc.service.dto;
 
 import lombok.Data;
-import java.io.Serializable;
+import java.util.List;
+import com.siival.bot.annotation.Query;
 
 /**
 * @website
-* @description /
 * @author Peter
 * @date 2024-06-16
 **/
 @Data
-public class LilliaFileBatchDto implements Serializable {
-
-    /** ID */
-    private Long lilliaFileBatchId;
-
-    private String uploadName;
-
-    private Integer uploadType;
-
-    private Integer num;
-
-    private Integer uploadTotalNum;
-
-    private Integer uploadSuccessNum;
-
-    private Integer uploadFailNum;
-
-    private Integer uploadRemoveNum;
-
-    private Integer unUploadNum;
-
-    private Integer readNum;
-
-    private String readRet;
-
-    private Integer status;
-
-    private Integer readStatus;
-
-    private Integer operatorId;
-
-    private String operator;
-
-    private String comment;
-
-    private Integer createTime;
-
-    private Integer updateTime;
+public class LilliaFileQueryCriteria{
 }

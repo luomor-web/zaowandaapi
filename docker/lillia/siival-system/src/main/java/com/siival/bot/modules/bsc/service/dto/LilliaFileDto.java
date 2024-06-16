@@ -25,34 +25,35 @@ import java.io.Serializable;
 * @date 2024-06-16
 **/
 @Data
-public class LilliaFileBatchDto implements Serializable {
+public class LilliaFileDto implements Serializable {
 
-    /** ID */
+    private Long lilliaFileId;
+
     private Long lilliaFileBatchId;
 
-    private String uploadName;
+    private String fileName;
 
-    private Integer uploadType;
+    private Integer fileType;
 
-    private Integer num;
+    private String filePath;
 
-    private Integer uploadTotalNum;
+    private String localPath;
 
-    private Integer uploadSuccessNum;
+    private String fileSize;
 
-    private Integer uploadFailNum;
+    private Integer fileCtime;
 
-    private Integer uploadRemoveNum;
+    private Integer fileCdate;
 
-    private Integer unUploadNum;
-
-    private Integer readNum;
+    private Integer fileUtime;
 
     private String readRet;
 
     private Integer status;
 
     private Integer readStatus;
+
+    private Long flag;
 
     private Integer operatorId;
 

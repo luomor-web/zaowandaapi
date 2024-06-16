@@ -7,35 +7,35 @@
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
-          <el-form-item label="ID">
+          <el-form-item label="lilliaFileId">
+            <el-input v-model="form.lilliaFileId" style="width: 370px;" />
+          </el-form-item>
+          <el-form-item label="lilliaFileBatchId" prop="lilliaFileBatchId">
             <el-input v-model="form.lilliaFileBatchId" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadName" prop="uploadName">
-            <el-input v-model="form.uploadName" style="width: 370px;" />
+          <el-form-item label="fileName" prop="fileName">
+            <el-input v-model="form.fileName" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadType" prop="uploadType">
-            <el-input v-model="form.uploadType" style="width: 370px;" />
+          <el-form-item label="fileType" prop="fileType">
+            <el-input v-model="form.fileType" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="num" prop="num">
-            <el-input v-model="form.num" style="width: 370px;" />
+          <el-form-item label="filePath" prop="filePath">
+            <el-input v-model="form.filePath" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadTotalNum" prop="uploadTotalNum">
-            <el-input v-model="form.uploadTotalNum" style="width: 370px;" />
+          <el-form-item label="localPath" prop="localPath">
+            <el-input v-model="form.localPath" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadSuccessNum" prop="uploadSuccessNum">
-            <el-input v-model="form.uploadSuccessNum" style="width: 370px;" />
+          <el-form-item label="fileSize" prop="fileSize">
+            <el-input v-model="form.fileSize" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadFailNum" prop="uploadFailNum">
-            <el-input v-model="form.uploadFailNum" style="width: 370px;" />
+          <el-form-item label="fileCtime" prop="fileCtime">
+            <el-input v-model="form.fileCtime" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadRemoveNum" prop="uploadRemoveNum">
-            <el-input v-model="form.uploadRemoveNum" style="width: 370px;" />
+          <el-form-item label="fileCdate" prop="fileCdate">
+            <el-input v-model="form.fileCdate" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="unUploadNum" prop="unUploadNum">
-            <el-input v-model="form.unUploadNum" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="readNum" prop="readNum">
-            <el-input v-model="form.readNum" style="width: 370px;" />
+          <el-form-item label="fileUtime" prop="fileUtime">
+            <el-input v-model="form.fileUtime" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="readRet" prop="readRet">
             <el-input v-model="form.readRet" style="width: 370px;" />
@@ -45,6 +45,9 @@
           </el-form-item>
           <el-form-item label="readStatus" prop="readStatus">
             <el-input v-model="form.readStatus" style="width: 370px;" />
+          </el-form-item>
+          <el-form-item label="flag" prop="flag">
+            <el-input v-model="form.flag" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="operatorId" prop="operatorId">
             <el-input v-model="form.operatorId" style="width: 370px;" />
@@ -70,25 +73,26 @@
       <!--表格渲染-->
       <el-table ref="table" v-loading="crud.loading" :data="crud.data" size="small" style="width: 100%;" @selection-change="crud.selectionChangeHandler">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="lilliaFileBatchId" label="ID" />
-        <el-table-column prop="uploadName" label="uploadName" />
-        <el-table-column prop="uploadType" label="uploadType" />
-        <el-table-column prop="num" label="num" />
-        <el-table-column prop="uploadTotalNum" label="uploadTotalNum" />
-        <el-table-column prop="uploadSuccessNum" label="uploadSuccessNum" />
-        <el-table-column prop="uploadFailNum" label="uploadFailNum" />
-        <el-table-column prop="uploadRemoveNum" label="uploadRemoveNum" />
-        <el-table-column prop="unUploadNum" label="unUploadNum" />
-        <el-table-column prop="readNum" label="readNum" />
+        <el-table-column prop="lilliaFileId" label="lilliaFileId" />
+        <el-table-column prop="lilliaFileBatchId" label="lilliaFileBatchId" />
+        <el-table-column prop="fileName" label="fileName" />
+        <el-table-column prop="fileType" label="fileType" />
+        <el-table-column prop="filePath" label="filePath" />
+        <el-table-column prop="localPath" label="localPath" />
+        <el-table-column prop="fileSize" label="fileSize" />
+        <el-table-column prop="fileCtime" label="fileCtime" />
+        <el-table-column prop="fileCdate" label="fileCdate" />
+        <el-table-column prop="fileUtime" label="fileUtime" />
         <el-table-column prop="readRet" label="readRet" />
         <el-table-column prop="status" label="status" />
         <el-table-column prop="readStatus" label="readStatus" />
+        <el-table-column prop="flag" label="flag" />
         <el-table-column prop="operatorId" label="operatorId" />
         <el-table-column prop="operator" label="operator" />
         <el-table-column prop="comment" label="comment" />
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
-        <el-table-column v-if="checkPer(['admin','lilliaFileBatch:edit','lilliaFileBatch:del'])" label="操作" width="150px" align="center">
+        <el-table-column v-if="checkPer(['admin','lilliaFile:edit','lilliaFile:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
               :data="scope.row"
@@ -104,54 +108,54 @@
 </template>
 
 <script>
-import crudLilliaFileBatch from '@/api/lilliaFileBatch'
+import crudLilliaFile from '@/api/lilliaFile'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 // import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { lilliaFileBatchId: null, uploadName: null, uploadType: null, num: null, uploadTotalNum: null, uploadSuccessNum: null, uploadFailNum: null, uploadRemoveNum: null, unUploadNum: null, readNum: null, readRet: null, status: null, readStatus: null, operatorId: null, operator: null, comment: null, createTime: null, updateTime: null }
+const defaultForm = { lilliaFileId: null, lilliaFileBatchId: null, fileName: null, fileType: null, filePath: null, localPath: null, fileSize: null, fileCtime: null, fileCdate: null, fileUtime: null, readRet: null, status: null, readStatus: null, flag: null, operatorId: null, operator: null, comment: null, createTime: null, updateTime: null }
 export default {
-  name: 'LilliaFileBatch',
+  name: 'LilliaFile',
   components: { pagination, crudOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
-    return CRUD({ title: '文件批次', url: 'bsc/lilliaFileBatch', idField: 'lilliaFileBatchId', sort: 'lilliaFileBatchId,desc', crudMethod: { ...crudLilliaFileBatch }})
+    return CRUD({ title: '文件', url: 'bsc/lilliaFile', idField: 'lilliaFileId', sort: 'lilliaFileId,desc', crudMethod: { ...crudLilliaFile }})
   },
   data() {
     return {
       permission: {
-        add: ['admin', 'lilliaFileBatch:add'],
-        edit: ['admin', 'lilliaFileBatch:edit'],
-        del: ['admin', 'lilliaFileBatch:del']
+        add: ['admin', 'lilliaFile:add'],
+        edit: ['admin', 'lilliaFile:edit'],
+        del: ['admin', 'lilliaFile:del']
       },
       rules: {
-        uploadName: [
+        lilliaFileBatchId: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        uploadType: [
+        fileName: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        num: [
+        fileType: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        uploadTotalNum: [
+        filePath: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        uploadSuccessNum: [
+        localPath: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        uploadFailNum: [
+        fileSize: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        uploadRemoveNum: [
+        fileCtime: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        unUploadNum: [
+        fileCdate: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
-        readNum: [
+        fileUtime: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         readRet: [
@@ -161,6 +165,9 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         readStatus: [
+          { required: true, message: '不能为空', trigger: 'blur' }
+        ],
+        flag: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         operatorId: [
