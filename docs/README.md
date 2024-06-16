@@ -207,4 +207,12 @@ git checkout siival-system/src/main/java/com/siival/bot/modules/bsc/service/maps
 git checkout siival-system/src/main/java/com/siival/bot/modules/bsc/service/mapstruct/WxAppMapper.java
 git checkout siival-system/src/main/java/com/siival/bot/modules/bsc/service/mapstruct/WxUserMapper.java
 git add siival-system/
+
+rm -rf siival-common/src/main/java/com/siival/bot/annotation/ExcelColumn.java
+rm -rf siival-common/src/main/java/com/siival/bot/dto/QuestionAttributes.java
+rm -rf siival-common/src/main/java/com/siival/bot/utils/ExcelUtils.java
+rm -rf siival-common/src/main/java/com/siival/bot/utils/JacksonUtil.java
+rm -rf siival-system/src/main/java/com/siival/bot/modules/bsc/rest/LilliaFile1Controller.java
+rm -rf siival-system/src/main/java/com/siival/bot/modules/bsc/service/file/dto/Exam1.java
+rm -rf siival-system/src/main/java/com/siival/bot/modules/bsc/rest/LilliaFileBatch1Controller.java
 ```
