@@ -119,7 +119,7 @@ public class RegexUtil {
         a)保險人有可能變成資不抵債的危險性 b)潛在利益有關的不確定性
         c)對可能發生的風險有保護措施 d)潛在損失有關的不確定性
      */
-    public static final String REGEX_QUESTION1 = "^(.+)[a)]{1}(.+)[b)]{1}(.+)[c)]{1}(.+)[d)]{1}(.+)$";
+    public static final String REGEX_QUESTION1 = "^(.+)[a\\)]{1}(.+)[b\\)]{1}(.+)[c\\)]{1}(.+)[d\\)]{1}(.+)$";
 
     private RegexUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
