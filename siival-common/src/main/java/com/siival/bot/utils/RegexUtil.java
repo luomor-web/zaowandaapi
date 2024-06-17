@@ -119,7 +119,7 @@ public class RegexUtil {
         a)保險人有可能變成資不抵債的危險性 b)潛在利益有關的不確定性
         c)對可能發生的風險有保護措施 d)潛在損失有關的不確定性
      */
-    public static final String REGEX_QUESTION1 = "^(.+)[a)]{1}(.+)[b)]{1}(.+)[c)]{1}(.+)[d)]{1}(.+)$";
+    public static final String REGEX_QUESTION1 = "^(.+)[a\\)]{1}(.+)[b\\)]{1}(.+)[c\\)]{1}(.+)[d\\)]{1}(.+)$";
 
     private RegexUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -261,6 +261,25 @@ public class RegexUtil {
      * @return the list of input matches the regex
      */
     public static List<String> getMatches(final String regex, final CharSequence input) {
+        if (input == null)
+            return Collections.emptyList();
+        List<String> matches = new ArrayList<>();
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        while (matcher.find()) {
+            matches.add(matcher.group());
+        }
+        return matches;
+    }
+
+    /**
+     * Return the list of input matches the regex.
+     *
+     * @param regex The regex.
+     * @param input The input.
+     * @return the list of input matches the regex
+     */
+    public static List<String> getMatches(final String regex, final String input) {
         if (input == null)
             return Collections.emptyList();
         List<String> matches = new ArrayList<>();
