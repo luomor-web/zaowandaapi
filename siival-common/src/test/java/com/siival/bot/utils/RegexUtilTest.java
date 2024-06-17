@@ -3,6 +3,7 @@ package com.siival.bot.utils;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RegexUtilTest {
     @Test
@@ -15,5 +16,8 @@ public class RegexUtilTest {
         List<String> data = RegexUtil.getMatches(RegexUtil.REGEX_QUESTION1, questionAll);
         System.out.println(data.size());
         System.out.println(data);
+        String input = "(test)";
+        String test = Pattern.quote(input);
+        System.out.println(test);
     }
 }
