@@ -13,6 +13,7 @@ public class RegexUtilTest {
                 "c)對可能發生的風險有保護措施 d)潛在損失有關的不確定性";
         questionAll = "testa)testb)c)testd)test";
         List<String> data = RegexUtil.getMatches(RegexUtil.REGEX_QUESTION1, questionAll);
+        System.out.println(data.size());
         System.out.println(data);
     }
 }
