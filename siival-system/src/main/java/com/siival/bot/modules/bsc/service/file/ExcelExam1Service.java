@@ -18,6 +18,7 @@ import com.siival.bot.modules.bsc.service.impl.QuestionInfoServiceImpl;
 import com.siival.bot.utils.BeanUtil;
 import com.siival.bot.utils.ExcelUtils;
 import com.siival.bot.utils.JacksonUtil;
+import com.siival.bot.utils.RegexUtil;
 
 @Service
 public class ExcelExam1Service implements FileBaseService {
@@ -36,6 +37,7 @@ public class ExcelExam1Service implements FileBaseService {
         Exam1 exam1 = null;
         String questionAll = "";
         String question = "";
+        List<String> data;
         QuestionInfoQueryCriteria criteria;
         List<QuestionInfoDto> questionInfoDtoList;
         QuestionInfoDto questionInfoDto;
@@ -45,7 +47,8 @@ public class ExcelExam1Service implements FileBaseService {
             exam1 = list.get(j);
             logger.info("读取文件信息---批次读取---" + j + "---" + JacksonUtil.toJson(exam1));
             questionAll = exam1.getQuestion();
-
+            data = RegexUtil.getMatches(RegexUtil.REGEX_QUESTION1, questionAll);
+            logger.info("读取文件信息---批次读取---" + j + "---" + JacksonUtil.toJson(data));
             criteria = new QuestionInfoQueryCriteria();
             criteria.setQuestion(question);
             questionInfoDtoList = questionInfoService.queryAll(criteria);
