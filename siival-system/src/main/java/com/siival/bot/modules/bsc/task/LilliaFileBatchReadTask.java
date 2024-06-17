@@ -55,7 +55,7 @@ public class LilliaFileBatchReadTask extends Task {
             logger.info("读取文件信息---批次读取ERR---" + this.lilliaFileBatchId + "---没有批次信息");
             return;
         }
-        if(lilliaFileBatchDto.getStatus().equals(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ)) {
+        if(lilliaFileBatchDto.getStatus().equals(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.STATUS_READ)) {
             logger.info("读取文件信息---批次读取ERR---" + this.lilliaFileBatchId + "---上传批次读取中，请稍后查看");
             return;
         }
@@ -82,10 +82,10 @@ public class LilliaFileBatchReadTask extends Task {
         String readRet = "";
 
         try {
-            lilliaFileBatchDto.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ);
+            lilliaFileBatchDto.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.STATUS_READ);
             LilliaFileBatch lilliaFileBatch = new LilliaFileBatch();
             lilliaFileBatch.setLilliaFileBatchId(this.lilliaFileBatchId);
-            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ);
+            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.STATUS_READ);
             lilliaFileBatchService.update(lilliaFileBatch);
 
             for(int i = 0 ; i < lilliaFiles.size() ; i++) {
@@ -109,7 +109,7 @@ public class LilliaFileBatchReadTask extends Task {
                 fileBaseService.read(localFile);
                 
                 readNum++;
-                status = com.siival.bot.modules.bsc.service.lillia.LilliaFileService.STATUS_EXCEL;
+                status = com.siival.bot.modules.bsc.service.lillia.LilliaFile1Service.STATUS_EXCEL;
 
                 lilliaFileDto.setStatus(status);
                 lilliaFileDto.setReadStatus(readStatus);
@@ -131,14 +131,14 @@ public class LilliaFileBatchReadTask extends Task {
                 }
             }
             if(hasAllRead) {
-                readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.READ_STATUS_ALL_DONE;
+                readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.READ_STATUS_ALL_DONE;
                 readRet = "全部读取文件信息";
             } else {
                 if(existData) {
-                    readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.READ_STATUS_PART_DONE;
+                    readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.READ_STATUS_PART_DONE;
                     readRet = "部分读取文件信息";
                 } else {
-                    readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.READ_STATUS_NO_EXCEL;
+                    readStatus = com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.READ_STATUS_NO_EXCEL;
                     readRet = "所有文件没有信息";
                 }
             }
@@ -149,7 +149,7 @@ public class LilliaFileBatchReadTask extends Task {
             lilliaFileBatch.setReadNum(readNum);
             lilliaFileBatch.setReadStatus(readStatus);
             lilliaFileBatch.setReadRet(readRet);
-            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ);
+            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.STATUS_READ);
 
             lilliaFileBatchService.update(lilliaFileBatch);
         } catch(Exception e) {
@@ -157,7 +157,7 @@ public class LilliaFileBatchReadTask extends Task {
             lilliaFileBatch.setLilliaFileBatchId(this.lilliaFileBatchId);
             lilliaFileBatch.setReadNum(readNum);
             lilliaFileBatch.setReadRet("读取文件错误");
-            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatchService.STATUS_READ_ERR);
+            lilliaFileBatch.setStatus(com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service.STATUS_READ_ERR);
 
             lilliaFileBatchService.update(lilliaFileBatch);
             e.printStackTrace();

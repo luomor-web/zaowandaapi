@@ -20,9 +20,11 @@ import com.siival.bot.modules.bsc.domain.LilliaFileBatch;
 import com.siival.bot.modules.bsc.service.LilliaFileBatchService;
 import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchDto;
 import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchQueryCriteria;
+import com.siival.bot.modules.bsc.service.lillia.LilliaFileBatch1Service;
 import com.siival.bot.resp.R;
 
 import org.apache.tomcat.util.http.ResponseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -46,6 +48,9 @@ import javax.servlet.http.HttpServletResponse;
 public class LilliaFileBatch1Controller {
 
     private final LilliaFileBatchService lilliaFileBatchService;
+    
+    @Autowired
+    private LilliaFileBatch1Service lilliaFileBatch1Service;
 
     @PreAuthorize("@el.check('lilliaFileBatch:list')")
     @Log("添加")
@@ -54,6 +59,14 @@ public class LilliaFileBatch1Controller {
     public Object create(@RequestBody LilliaFileBatch lilliaFileBatch) {
         LilliaFileBatchDto lilliaFileBatchDto = lilliaFileBatchService.create(lilliaFileBatch);
         return new ResponseEntity<>(lilliaFileBatchDto, HttpStatus.CREATED);
+    }
+
+    @PreAuthorize("@el.check('lilliaFileBatch:list')")
+    @Log("读取图片信息")
+    @ApiOperation("读取图片信息")
+    @PostMapping("/readExcel")
+    public Object readExcel(@RequestBody LilliaFileBatch lilliaFileBatch) {
+        return lilliaFileBatch1Service.addTask(lilliaFileBatch);
     }
 
     @Log("导出数据")

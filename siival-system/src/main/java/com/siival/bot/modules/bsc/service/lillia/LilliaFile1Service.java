@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.siival.bot.modules.bsc.service.mapstruct.LilliaFileBatchMapper;
 
 @Service
-public class LilliaFileService extends LilliaBaseService {
+public class LilliaFile1Service extends LilliaBaseService {
     public static final Long FLAG_NO_DATA = 0x01L; // 没有信息
     public static final Long FLAG_HAS_DATA = 0x02L; // 存在信息
     public static final Long FLAG_DATA = 0x04L; // 已读取信息
@@ -18,5 +18,5 @@ public class LilliaFileService extends LilliaBaseService {
     public static final Integer READ_STATUS_HAS_DATA = 2; // 存在信息
     public static final Integer READ_STATUS_DATA = 3; // 已读取信息
 
-    private final Log logger = LogFactory.getLog(LilliaFileBatchService.class);
+    private final Log logger = LogFactory.getLog(LilliaFile1Service.class);
 }
