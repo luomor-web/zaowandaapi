@@ -28,7 +28,6 @@ import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchQueryCriteria;
 import com.siival.bot.modules.bsc.service.mapstruct.LilliaFileBatchMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.tomcat.util.http.ResponseUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -74,22 +73,6 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
     @Transactional(rollbackFor = Exception.class)
     public LilliaFileBatchDto create(LilliaFileBatch resources) {
         return lilliaFileBatchMapper.toDto(lilliaFileBatchRepository.save(resources));
-    }
-
-    public Object addTask(CtFileBatch ctFileBatch) {
-        Long ctFileBatchId = ctFileBatch.getCtFileBatchId();
-        //check read
-        CtFileBatch dbCtFileBatch = ctFileBatchService.findFileBatch(ctFileBatchId);
-        if(dbCtFileBatch == null) {
-            return ResponseUtil.fail(ResponseUtil.RET_NOT_FOUND_404, "没有上传批次");
-        }
-        if(dbCtFileBatch.getStatus().equals(CtFileBatchService.STATUS_READ)) {
-            return ResponseUtil.fail(ResponseUtil.RET_NOT_ALLOW, "上传批次读取中，请稍后查看");
-        }
-        dbCtFileBatch.setStatus(CtFileBatchService.STATUS_READ);
-        taskService.addTask(new CtFileBatchReadTask(ctFileBatchId));
-
-        return ResponseUtil.ok(dbCtFileBatch);
     }
 
     @Override
