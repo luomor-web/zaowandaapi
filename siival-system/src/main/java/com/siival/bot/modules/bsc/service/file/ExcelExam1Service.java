@@ -34,6 +34,7 @@ public class ExcelExam1Service implements FileBaseService {
         }
 
         Exam1 exam1 = null;
+        String questionAll = "";
         String question = "";
         QuestionInfoQueryCriteria criteria;
         List<QuestionInfoDto> questionInfoDtoList;
@@ -43,7 +44,8 @@ public class ExcelExam1Service implements FileBaseService {
         for(int j = 0 ; j < list.size() ; j++) {
             exam1 = list.get(j);
             logger.info("读取文件信息---批次读取---" + j + "---" + JacksonUtil.toJson(exam1));
-            question = exam1.getQuestion();
+            questionAll = exam1.getQuestion();
+
             criteria = new QuestionInfoQueryCriteria();
             criteria.setQuestion(question);
             questionInfoDtoList = questionInfoService.queryAll(criteria);
