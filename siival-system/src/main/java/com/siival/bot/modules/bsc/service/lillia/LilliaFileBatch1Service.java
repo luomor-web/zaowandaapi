@@ -45,6 +45,6 @@ public class LilliaFileBatch1Service extends LilliaBaseService {
         dbLilliaFileBatch.setStatus(LilliaFileBatch1Service.STATUS_READ);
         taskService.addTask(new LilliaFileBatchReadTask(lilliaFileBatchId));
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(dbLilliaFileBatch, HttpStatus.OK);
     }
 }
