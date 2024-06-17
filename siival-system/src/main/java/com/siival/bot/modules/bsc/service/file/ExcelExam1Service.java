@@ -27,7 +27,7 @@ public class ExcelExam1Service implements FileBaseService {
     public void read(File xlsFile) {
         QuestionInfoService questionInfoService = BeanUtil.getBean(QuestionInfoServiceImpl.class);
 
-        List<Exam1> list = ExcelUtils.readExcel(Exam1.class, xlsFile, 1);
+        List<Exam1> list = ExcelUtils.readExcel(Exam1.class, xlsFile, 0);
         logger.info("读取文件信息---批次读取---行数---" + list.size());
         if(list.size() > 0) {
             logger.info("读取文件信息---批次读取---第一行---" + JacksonUtil.toJson(list.get(0)));
