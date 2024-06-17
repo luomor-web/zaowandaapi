@@ -15,8 +15,11 @@ public class RegexUtilTest {
                 "資不抵債的危險性 b)潛在利益有關的不確定性\n" + //
                 "c)對可能發生的風險有保護措施 d)潛在損失有關的不確定性";
         questionAll = "test1a)test2b)test3c)test4d)test5";
-        String[] questionArray = questionAll.split("(a|b|c|d)\\)");
-        System.out.println(questionArray);
+        String[] questionArray = questionAll.split("[a-d]\\)");
+        System.out.println(questionArray.length);
+        for(int i = 0 ; i < questionArray.length ; i++) {
+            System.out.println(questionArray[i]);
+        }
         List<String> data = RegexUtil.getMatches(RegexUtil.REGEX_QUESTION1, questionAll);
         System.out.println(data.size());
         System.out.println(data);
