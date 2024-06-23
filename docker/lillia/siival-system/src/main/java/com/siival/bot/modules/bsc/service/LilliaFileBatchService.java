@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 * @website
 * @description 服务接口
 * @author Peter
-* @date 2024-06-16
+* @date 2024-06-23
 **/
 public interface LilliaFileBatchService {
 

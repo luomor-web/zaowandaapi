@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 /**
 * @website
 * @author Peter
-* @date 2024-06-16
+* @date 2024-06-23
 **/
 public interface LilliaFileBatchRepository extends JpaRepository<LilliaFileBatch, Long>, JpaSpecificationExecutor<LilliaFileBatch> {
 }

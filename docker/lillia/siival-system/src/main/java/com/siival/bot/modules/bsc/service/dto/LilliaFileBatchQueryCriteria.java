@@ -22,7 +22,7 @@ import com.siival.bot.annotation.Query;
 /**
 * @website
 * @author Peter
-* @date 2024-06-16
+* @date 2024-06-23
 **/
 @Data
 public class LilliaFileBatchQueryCriteria{

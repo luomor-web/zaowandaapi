@@ -24,7 +24,7 @@ import org.mapstruct.ReportingPolicy;
 /**
 * @website
 * @author Peter
-* @date 2024-06-16
+* @date 2024-06-23
 **/
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface LilliaFileBatchMapper extends BaseMapper<LilliaFileBatchDto, LilliaFileBatch> {
