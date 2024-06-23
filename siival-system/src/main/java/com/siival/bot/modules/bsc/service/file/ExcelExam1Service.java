@@ -69,6 +69,7 @@ public class ExcelExam1Service implements FileBaseService {
             }
             criteria = new QuestionInfoQueryCriteria();
             criteria.setQuestion(question);
+            criteria.setPid(lilliaFileBatchDto.getQuestionMenuId());
             questionInfoDtoList = questionInfoService.queryAll(criteria);
             // insert
             if(questionInfoDtoList == null || questionInfoDtoList.size() == 0) {
