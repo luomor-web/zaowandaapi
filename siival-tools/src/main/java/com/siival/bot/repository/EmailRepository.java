@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Peter Zhang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import com.siival.bot.domain.EmailConfig;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * @author Zheng Jie
+ * @author Peter Zhang
  * @date 2018-12-26
  */
 public interface EmailRepository extends JpaRepository<EmailConfig,Long> {

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Peter Zhang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import javax.activation.FileDataSource;
 import java.util.Optional;
 
 /**
- * @author Zheng Jie
+ * @author Peter Zhang
  * @date 2018-12-26
  */
 @Service

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Peter Zhang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package com.siival.bot.service;
 import com.siival.bot.domain.GenConfig;
 
 /**
- * @author Zheng Jie
+ * @author Peter Zhang
  * @date 2019-01-14
  */
 public interface GenConfigService {

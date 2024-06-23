@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Peter Zhang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
 /**
  * api页面 /doc.html
- * @author Zheng Jie
+ * @author Peter Zhang
  * @date 2018-11-23
  */
 @Configuration

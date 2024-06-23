@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Peter Zhang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ import java.util.Map;
 /**
  * File工具类，扩展 hutool 工具包
  *
- * @author Zheng Jie
+ * @author Peter Zhang
  * @date 2018-12-27
  */
 public class FileUtil extends cn.hutool.core.io.FileUtil {

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Peter Zhang
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package com.siival.bot.utils;
 import java.io.Closeable;
 
 /**
- * @author Zheng Jie
+ * @author Peter Zhang
  * @website https://el-admin.vip
  * @description 用于关闭各种连接，缺啥补啥
  * @date 2021-03-05
