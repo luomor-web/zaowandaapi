@@ -68,10 +68,11 @@ public class ExcelExamFinalService implements FileBaseService {
                         analysis = exam1.getChatper();
                     }
                 } else {
-                    if(!StringUtils.isEmpty(exam1.getAnswer())) {
+                    if(!StringUtils.isEmpty(exam1.getQuestion())) {
                         data.add(exam1.getQuestion());
                     }
-                    if(exam1.getAnswer().equals("Y")) {
+                    if(!StringUtils.isEmpty(exam1.getAnswer())
+                        && exam1.getAnswer().equals("Y")) {
                         answer = exam1.getChatper().toUpperCase();
                     }
                 }
