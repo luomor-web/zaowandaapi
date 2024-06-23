@@ -15,6 +15,7 @@ import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchDto;
 import com.siival.bot.modules.bsc.service.dto.QuestionInfoDto;
 import com.siival.bot.modules.bsc.service.dto.QuestionInfoQueryCriteria;
 import com.siival.bot.modules.bsc.service.file.dto.Exam1;
+import com.siival.bot.modules.bsc.service.file.dto.ExamFinal;
 import com.siival.bot.modules.bsc.service.impl.QuestionInfoServiceImpl;
 import com.siival.bot.utils.BeanUtil;
 import com.siival.bot.utils.ExcelUtils;
@@ -22,8 +23,8 @@ import com.siival.bot.utils.JacksonUtil;
 import com.siival.bot.utils.RegexUtil;
 
 @Service
-public class ExcelExam2Service implements FileBaseService {
-    public final Log logger = LogFactory.getLog(ExcelExam2Service.class);
+public class ExcelExamFinalService implements FileBaseService {
+    public final Log logger = LogFactory.getLog(ExcelExamFinalService.class);
 
     @Override
     public void read(File xlsFile) {
@@ -34,13 +35,13 @@ public class ExcelExam2Service implements FileBaseService {
     public void read(File xlsFile, LilliaFileBatchDto lilliaFileBatchDto) throws Exception {
         QuestionInfoService questionInfoService = BeanUtil.getBean(QuestionInfoServiceImpl.class);
 
-        List<Exam1> list = ExcelUtils.readExcel(Exam1.class, xlsFile, 0);
+        List<ExamFinal> list = ExcelUtils.readExcel(ExamFinal.class, xlsFile, 0);
         logger.info("读取文件信息---批次读取---行数---" + list.size());
         if(list.size() > 0) {
             logger.info("读取文件信息---批次读取---第一行---" + JacksonUtil.toJson(list.get(0)));
         }
 
-        Exam1 exam1 = null;
+        ExamFinal exam1 = null;
         String questionAll = "";
         String question = "";
         List<String> data;
