@@ -27,11 +27,11 @@ import java.io.Serializable;
 @Data
 public class LilliaFileBatchDto implements Serializable {
 
-    /** ID */
     private Long lilliaFileBatchId;
 
     private String uploadName;
 
+    /**   */
     private Integer uploadType;
 
     private Integer num;
@@ -56,6 +56,7 @@ public class LilliaFileBatchDto implements Serializable {
 
     private Integer operatorId;
 
+    /**   */
     private String operator;
 
     private String comment;
@@ -63,4 +64,6 @@ public class LilliaFileBatchDto implements Serializable {
     private Integer createTime;
 
     private Integer updateTime;
+
+    private Integer questionMenuId;
 }

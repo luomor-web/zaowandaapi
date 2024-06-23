@@ -7,13 +7,13 @@
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
-          <el-form-item label="ID">
+          <el-form-item label="lilliaFileBatchId">
             <el-input v-model="form.lilliaFileBatchId" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="uploadName" prop="uploadName">
             <el-input v-model="form.uploadName" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="uploadType" prop="uploadType">
+          <el-form-item label=" " prop="uploadType">
             <el-input v-model="form.uploadType" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="num" prop="num">
@@ -49,7 +49,7 @@
           <el-form-item label="operatorId" prop="operatorId">
             <el-input v-model="form.operatorId" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="operator" prop="operator">
+          <el-form-item label=" " prop="operator">
             <el-input v-model="form.operator" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="comment" prop="comment">
@@ -61,6 +61,9 @@
           <el-form-item label="updateTime" prop="updateTime">
             <el-input v-model="form.updateTime" style="width: 370px;" />
           </el-form-item>
+          <el-form-item label="questionMenuId" prop="questionMenuId">
+            <el-input v-model="form.questionMenuId" style="width: 370px;" />
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button type="text" @click="crud.cancelCU">取消</el-button>
@@ -70,9 +73,9 @@
       <!--表格渲染-->
       <el-table ref="table" v-loading="crud.loading" :data="crud.data" size="small" style="width: 100%;" @selection-change="crud.selectionChangeHandler">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="lilliaFileBatchId" label="ID" />
+        <el-table-column prop="lilliaFileBatchId" label="lilliaFileBatchId" />
         <el-table-column prop="uploadName" label="uploadName" />
-        <el-table-column prop="uploadType" label="uploadType" />
+        <el-table-column prop="uploadType" label=" " />
         <el-table-column prop="num" label="num" />
         <el-table-column prop="uploadTotalNum" label="uploadTotalNum" />
         <el-table-column prop="uploadSuccessNum" label="uploadSuccessNum" />
@@ -84,10 +87,11 @@
         <el-table-column prop="status" label="status" />
         <el-table-column prop="readStatus" label="readStatus" />
         <el-table-column prop="operatorId" label="operatorId" />
-        <el-table-column prop="operator" label="operator" />
+        <el-table-column prop="operator" label=" " />
         <el-table-column prop="comment" label="comment" />
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
+        <el-table-column prop="questionMenuId" label="questionMenuId" />
         <el-table-column v-if="checkPer(['admin','lilliaFileBatch:edit','lilliaFileBatch:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
@@ -111,7 +115,7 @@ import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { lilliaFileBatchId: null, uploadName: null, uploadType: null, num: null, uploadTotalNum: null, uploadSuccessNum: null, uploadFailNum: null, uploadRemoveNum: null, unUploadNum: null, readNum: null, readRet: null, status: null, readStatus: null, operatorId: null, operator: null, comment: null, createTime: null, updateTime: null }
+const defaultForm = { lilliaFileBatchId: null, uploadName: null, uploadType: null, num: null, uploadTotalNum: null, uploadSuccessNum: null, uploadFailNum: null, uploadRemoveNum: null, unUploadNum: null, readNum: null, readRet: null, status: null, readStatus: null, operatorId: null, operator: null, comment: null, createTime: null, updateTime: null, questionMenuId: null }
 export default {
   name: 'LilliaFileBatch',
   components: { pagination, crudOperation, udOperation },
@@ -131,7 +135,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         uploadType: [
-          { required: true, message: '不能为空', trigger: 'blur' }
+          { required: true, message: ' 不能为空', trigger: 'blur' }
         ],
         num: [
           { required: true, message: '不能为空', trigger: 'blur' }
@@ -167,7 +171,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         operator: [
-          { required: true, message: '不能为空', trigger: 'blur' }
+          { required: true, message: ' 不能为空', trigger: 'blur' }
         ],
         comment: [
           { required: true, message: '不能为空', trigger: 'blur' }
@@ -176,6 +180,9 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         updateTime: [
+          { required: true, message: '不能为空', trigger: 'blur' }
+        ],
+        questionMenuId: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ]
       }    }

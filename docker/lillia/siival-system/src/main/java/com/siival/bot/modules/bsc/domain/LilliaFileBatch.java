@@ -37,7 +37,7 @@ public class LilliaFileBatch implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lillia_file_batch_id")
-    @ApiModelProperty(value = "ID")
+    @ApiModelProperty(value = "lilliaFileBatchId")
     private Long lilliaFileBatchId;
 
     @Column(name = "upload_name",nullable = false)
@@ -47,7 +47,7 @@ public class LilliaFileBatch implements Serializable {
 
     @Column(name = "upload_type",nullable = false)
     @NotNull
-    @ApiModelProperty(value = "uploadType")
+    @ApiModelProperty(value = " ")
     private Integer uploadType;
 
     @Column(name = "num",nullable = false)
@@ -107,7 +107,7 @@ public class LilliaFileBatch implements Serializable {
 
     @Column(name = "operator",nullable = false)
     @NotBlank
-    @ApiModelProperty(value = "operator")
+    @ApiModelProperty(value = " ")
     private String operator;
 
     @Column(name = "comment",nullable = false)
@@ -124,6 +124,11 @@ public class LilliaFileBatch implements Serializable {
     @NotNull
     @ApiModelProperty(value = "updateTime")
     private Integer updateTime;
+
+    @Column(name = "question_menu_id",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "questionMenuId")
+    private Integer questionMenuId;
 
     public void copy(LilliaFileBatch source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
