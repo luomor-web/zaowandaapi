@@ -49,7 +49,7 @@
           <el-form-item label="operatorId" prop="operatorId">
             <el-input v-model="form.operatorId" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label="operator " prop="operator">
+          <el-form-item label="operator" prop="operator">
             <el-input v-model="form.operator" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="comment" prop="comment">
@@ -87,7 +87,7 @@
         <el-table-column prop="status" label="status" />
         <el-table-column prop="readStatus" label="readStatus" />
         <el-table-column prop="operatorId" label="operatorId" />
-        <el-table-column prop="operator" label="operator " />
+        <el-table-column prop="operator" label="operator" />
         <el-table-column prop="comment" label="comment" />
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
@@ -171,7 +171,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         operator: [
-          { required: true, message: 'operator 不能为空', trigger: 'blur' }
+          { required: true, message: 'operator不能为空', trigger: 'blur' }
         ],
         comment: [
           { required: true, message: '不能为空', trigger: 'blur' }

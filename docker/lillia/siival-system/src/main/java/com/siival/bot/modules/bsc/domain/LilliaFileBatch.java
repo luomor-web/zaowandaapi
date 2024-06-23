@@ -107,7 +107,7 @@ public class LilliaFileBatch implements Serializable {
 
     @Column(name = "operator",nullable = false)
     @NotBlank
-    @ApiModelProperty(value = "operator ")
+    @ApiModelProperty(value = "operator")
     private String operator;
 
     @Column(name = "comment",nullable = false)

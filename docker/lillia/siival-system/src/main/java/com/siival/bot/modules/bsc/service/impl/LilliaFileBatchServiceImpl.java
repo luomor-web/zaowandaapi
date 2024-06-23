@@ -109,7 +109,7 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
             map.put(" status",  lilliaFileBatch.getStatus());
             map.put(" readStatus",  lilliaFileBatch.getReadStatus());
             map.put(" operatorId",  lilliaFileBatch.getOperatorId());
-            map.put("operator ", lilliaFileBatch.getOperator());
+            map.put("operator", lilliaFileBatch.getOperator());
             map.put(" comment",  lilliaFileBatch.getComment());
             map.put(" createTime",  lilliaFileBatch.getCreateTime());
             map.put(" updateTime",  lilliaFileBatch.getUpdateTime());

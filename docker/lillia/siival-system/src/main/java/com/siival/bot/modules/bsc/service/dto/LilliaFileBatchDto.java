@@ -56,7 +56,7 @@ public class LilliaFileBatchDto implements Serializable {
 
     private Integer operatorId;
 
-    /** operator  */
+    /** operator */
     private String operator;
 
     private String comment;
