@@ -21,6 +21,7 @@ import com.siival.bot.utils.BeanUtil;
 import com.siival.bot.utils.ExcelUtils;
 import com.siival.bot.utils.JacksonUtil;
 import com.siival.bot.utils.RegexUtil;
+import com.siival.bot.utils.StringUtils;
 
 @Service
 public class ExcelExamFinalService implements FileBaseService {
@@ -42,8 +43,9 @@ public class ExcelExamFinalService implements FileBaseService {
         }
 
         ExamFinal exam1 = null;
-        String questionAll = "";
         String question = "";
+        String answer = "";
+        String analysis = "";
         List<String> data;
         QuestionInfoQueryCriteria criteria;
         List<QuestionInfoDto> questionInfoDtoList;
@@ -52,15 +54,29 @@ public class ExcelExamFinalService implements FileBaseService {
         List<SelectListInfo> selectListInfoList;
         SelectListInfo selectListInfo;
 
-        for(int j = 0 ; j < list.size() ; j++) {
-            exam1 = list.get(j);
-            logger.info("读取文件信息---批次读取---" + j + "---" + JacksonUtil.toJson(exam1));
-            questionAll = exam1.getQuestion();
-            // [{"title": "test"}]
-            data = RegexUtil.getMatches(RegexUtil.REGEX_QUESTION1, questionAll);
-            logger.info("读取文件信息---批次读取---" + j + "---" + JacksonUtil.toJson(data));
+        int num = 6;
+        for(int j = 0 ; j < list.size() ; j = j + num) {
+            data = new ArrayList<>();
+            for(int i = 0 ; i < num ; i++) {
+                exam1 = list.get(j + i);
+                logger.info("读取文件信息---批次读取---" + (j + i) + "---" + JacksonUtil.toJson(exam1));
+                if(i == 0) {
+                    question = "[单选]" + exam1.getQuestion();
+                    if(!StringUtils.isEmpty(exam1.getExplain())) {
+                        analysis = exam1.getExplain();
+                    } else {
+                        analysis = exam1.getChatper();
+                    }
+                } else {
+                    if(!StringUtils.isEmpty(exam1.getAnswer())) {
+                        data.add(exam1.getQuestion());
+                    }
+                    if(exam1.getAnswer().equals("Y")) {
+                        answer = exam1.getChatper().toUpperCase();
+                    }
+                }
+            }
             selectListInfoList = new ArrayList<>();
-            question = "[单选]" + data.get(0).replace("\n", "");
             for(int i = 1 ; i < data.size() ; i++) {
                 selectListInfo = new SelectListInfo();
                 selectListInfo.setTitle(data.get(i).replace("\n", ""));
@@ -76,8 +92,8 @@ public class ExcelExamFinalService implements FileBaseService {
                 questionInfo.setType(1);
                 questionInfo.setMultiply(0);
                 questionInfo.setPid(lilliaFileBatchDto.getQuestionMenuId());
-                questionInfo.setAnalysis(exam1.getChatper());
-                questionInfo.setRightAnswer(exam1.getAnswer1());
+                questionInfo.setAnalysis(analysis);
+                questionInfo.setRightAnswer(answer);
                 questionInfo.setStatus(1);
                 questionInfo.setQuestion(question);
                 questionInfo.setSelectList(selectListInfoList);
@@ -89,8 +105,8 @@ public class ExcelExamFinalService implements FileBaseService {
                 questionInfo.setType(1);
                 questionInfo.setMultiply(0);
                 questionInfo.setPid(lilliaFileBatchDto.getQuestionMenuId());
-                questionInfo.setAnalysis(exam1.getChatper());
-                questionInfo.setRightAnswer(exam1.getAnswer1());
+                questionInfo.setAnalysis(analysis);
+                questionInfo.setRightAnswer(answer);
                 questionInfo.setStatus(1);
                 questionInfo.setQuestion(question);
                 questionInfo.setSelectList(selectListInfoList);
