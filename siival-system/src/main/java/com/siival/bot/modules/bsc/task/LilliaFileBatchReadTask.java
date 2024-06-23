@@ -106,7 +106,7 @@ public class LilliaFileBatchReadTask extends Task {
                 File localFile = new File(fileName);
 
                 fileBaseService = FileServiceBuild.buildService(lilliaFileDto.getFileType());
-                fileBaseService.read(localFile);
+                fileBaseService.read(localFile, lilliaFileBatchDto);
                 
                 readNum++;
                 status = com.siival.bot.modules.bsc.service.lillia.LilliaFile1Service.STATUS_EXCEL;
