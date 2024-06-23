@@ -132,6 +132,7 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
             map.put(" comment",  lilliaFileBatch.getComment());
             map.put(" createTime",  lilliaFileBatch.getCreateTime());
             map.put(" updateTime",  lilliaFileBatch.getUpdateTime());
+            map.put(" questionMenuId",  lilliaFileBatch.getQuestionMenuId());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);
