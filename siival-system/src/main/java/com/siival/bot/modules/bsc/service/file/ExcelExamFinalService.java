@@ -54,7 +54,7 @@ public class ExcelExamFinalService implements FileBaseService {
         List<SelectListInfo> selectListInfoList;
         SelectListInfo selectListInfo;
 
-        int num = 6;
+        int num = 5;
         for(int j = 0 ; j < list.size() ; j = j + num) {
             data = new ArrayList<>();
             for(int i = 0 ; i < num ; i++) {
