@@ -31,7 +31,7 @@ public class LilliaFileBatchDto implements Serializable {
 
     private String uploadName;
 
-    /**   */
+    /** uploadType */
     private Integer uploadType;
 
     private Integer num;
@@ -56,7 +56,7 @@ public class LilliaFileBatchDto implements Serializable {
 
     private Integer operatorId;
 
-    /**   */
+    /** operator  */
     private String operator;
 
     private String comment;

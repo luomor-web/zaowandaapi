@@ -47,7 +47,7 @@ public class LilliaFileBatch implements Serializable {
 
     @Column(name = "upload_type",nullable = false)
     @NotNull
-    @ApiModelProperty(value = " ")
+    @ApiModelProperty(value = "uploadType")
     private Integer uploadType;
 
     @Column(name = "num",nullable = false)
@@ -107,7 +107,7 @@ public class LilliaFileBatch implements Serializable {
 
     @Column(name = "operator",nullable = false)
     @NotBlank
-    @ApiModelProperty(value = " ")
+    @ApiModelProperty(value = "operator ")
     private String operator;
 
     @Column(name = "comment",nullable = false)

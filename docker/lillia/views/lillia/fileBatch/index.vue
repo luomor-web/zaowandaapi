@@ -13,7 +13,7 @@
           <el-form-item label="uploadName" prop="uploadName">
             <el-input v-model="form.uploadName" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label=" " prop="uploadType">
+          <el-form-item label="uploadType" prop="uploadType">
             <el-input v-model="form.uploadType" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="num" prop="num">
@@ -49,7 +49,7 @@
           <el-form-item label="operatorId" prop="operatorId">
             <el-input v-model="form.operatorId" style="width: 370px;" />
           </el-form-item>
-          <el-form-item label=" " prop="operator">
+          <el-form-item label="operator " prop="operator">
             <el-input v-model="form.operator" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="comment" prop="comment">
@@ -75,7 +75,7 @@
         <el-table-column type="selection" width="55" />
         <el-table-column prop="lilliaFileBatchId" label="lilliaFileBatchId" />
         <el-table-column prop="uploadName" label="uploadName" />
-        <el-table-column prop="uploadType" label=" " />
+        <el-table-column prop="uploadType" label="uploadType" />
         <el-table-column prop="num" label="num" />
         <el-table-column prop="uploadTotalNum" label="uploadTotalNum" />
         <el-table-column prop="uploadSuccessNum" label="uploadSuccessNum" />
@@ -87,7 +87,7 @@
         <el-table-column prop="status" label="status" />
         <el-table-column prop="readStatus" label="readStatus" />
         <el-table-column prop="operatorId" label="operatorId" />
-        <el-table-column prop="operator" label=" " />
+        <el-table-column prop="operator" label="operator " />
         <el-table-column prop="comment" label="comment" />
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
@@ -135,7 +135,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         uploadType: [
-          { required: true, message: ' 不能为空', trigger: 'blur' }
+          { required: true, message: 'uploadType不能为空', trigger: 'blur' }
         ],
         num: [
           { required: true, message: '不能为空', trigger: 'blur' }
@@ -171,7 +171,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         operator: [
-          { required: true, message: ' 不能为空', trigger: 'blur' }
+          { required: true, message: 'operator 不能为空', trigger: 'blur' }
         ],
         comment: [
           { required: true, message: '不能为空', trigger: 'blur' }

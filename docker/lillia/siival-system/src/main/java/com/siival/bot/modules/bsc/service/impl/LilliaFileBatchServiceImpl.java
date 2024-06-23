@@ -97,7 +97,7 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
         for (LilliaFileBatchDto lilliaFileBatch : all) {
             Map<String,Object> map = new LinkedHashMap<>();
             map.put(" uploadName",  lilliaFileBatch.getUploadName());
-            map.put(" ", lilliaFileBatch.getUploadType());
+            map.put("uploadType", lilliaFileBatch.getUploadType());
             map.put(" num",  lilliaFileBatch.getNum());
             map.put(" uploadTotalNum",  lilliaFileBatch.getUploadTotalNum());
             map.put(" uploadSuccessNum",  lilliaFileBatch.getUploadSuccessNum());
@@ -109,7 +109,7 @@ public class LilliaFileBatchServiceImpl implements LilliaFileBatchService {
             map.put(" status",  lilliaFileBatch.getStatus());
             map.put(" readStatus",  lilliaFileBatch.getReadStatus());
             map.put(" operatorId",  lilliaFileBatch.getOperatorId());
-            map.put(" ", lilliaFileBatch.getOperator());
+            map.put("operator ", lilliaFileBatch.getOperator());
             map.put(" comment",  lilliaFileBatch.getComment());
             map.put(" createTime",  lilliaFileBatch.getCreateTime());
             map.put(" updateTime",  lilliaFileBatch.getUpdateTime());
