@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.siival.bot.modules.bsc.domain.QuestionInfo;
 import com.siival.bot.modules.bsc.service.QuestionInfoService;
+import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchDto;
 import com.siival.bot.modules.bsc.service.dto.QuestionInfoDto;
 import com.siival.bot.modules.bsc.service.dto.QuestionInfoQueryCriteria;
 import com.siival.bot.modules.bsc.service.file.dto.Exam1;
@@ -56,5 +57,10 @@ public class ExcelExam2Service implements FileBaseService {
                 questionInfoService.update(questionInfo);
             }
         }
+    }
+
+    @Override
+    public void read(File localFile, LilliaFileBatchDto lilliaFileBatchDto) throws Exception {
+        
     }
 }

@@ -63,4 +63,6 @@ public class LilliaFileBatchDto implements Serializable {
     private Integer createTime;
 
     private Integer updateTime;
+
+    private Integer questionMenuId;
 }

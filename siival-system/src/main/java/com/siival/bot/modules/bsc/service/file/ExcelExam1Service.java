@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.siival.bot.modules.api.resp.SelectListInfo;
 import com.siival.bot.modules.bsc.domain.QuestionInfo;
 import com.siival.bot.modules.bsc.service.QuestionInfoService;
+import com.siival.bot.modules.bsc.service.dto.LilliaFileBatchDto;
 import com.siival.bot.modules.bsc.service.dto.QuestionInfoDto;
 import com.siival.bot.modules.bsc.service.dto.QuestionInfoQueryCriteria;
 import com.siival.bot.modules.bsc.service.file.dto.Exam1;
@@ -28,6 +29,11 @@ public class ExcelExam1Service implements FileBaseService {
 
     @Override
     public void read(File xlsFile) {
+        
+    }
+
+    @Override
+    public void read(File xlsFile, LilliaFileBatchDto lilliaFileBatchDto) throws Exception {
         QuestionInfoService questionInfoService = BeanUtil.getBean(QuestionInfoServiceImpl.class);
 
         List<Exam1> list = ExcelUtils.readExcel(Exam1.class, xlsFile, 0);
@@ -69,7 +75,7 @@ public class ExcelExam1Service implements FileBaseService {
                 questionInfo = new QuestionInfo();
                 questionInfo.setType(1);
                 questionInfo.setMultiply(0);
-                questionInfo.setPid(6);
+                questionInfo.setPid(lilliaFileBatchDto.getQuestionMenuId());
                 questionInfo.setAnalysis(exam1.getChatper());
                 questionInfo.setRightAnswer(exam1.getAnswer1());
                 questionInfo.setStatus(1);
@@ -82,7 +88,7 @@ public class ExcelExam1Service implements FileBaseService {
                 questionInfo.setId(questionInfoDto.getId());
                 questionInfo.setType(1);
                 questionInfo.setMultiply(0);
-                questionInfo.setPid(6);
+                questionInfo.setPid(lilliaFileBatchDto.getQuestionMenuId());
                 questionInfo.setAnalysis(exam1.getChatper());
                 questionInfo.setRightAnswer(exam1.getAnswer1());
                 questionInfo.setStatus(1);

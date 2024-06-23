@@ -114,6 +114,10 @@ public class LilliaFileBatch implements Serializable {
     @ApiModelProperty(value = "updateTime")
     private Integer updateTime;
 
+    @Column(name = "question_menu_id", nullable = false)
+    @ApiModelProperty(value = "questionMenuId")
+    private Integer questionMenuId;
+
     public void copy(LilliaFileBatch source) {
         BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));
     }
