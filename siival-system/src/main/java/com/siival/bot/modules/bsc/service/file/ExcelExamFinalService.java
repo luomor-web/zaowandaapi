@@ -78,7 +78,7 @@ public class ExcelExamFinalService implements FileBaseService {
                 }
             }
             selectListInfoList = new ArrayList<>();
-            for(int i = 1 ; i < data.size() ; i++) {
+            for(int i = 0 ; i < data.size() ; i++) {
                 selectListInfo = new SelectListInfo();
                 selectListInfo.setTitle(data.get(i).replace("\n", ""));
                 selectListInfoList.add(selectListInfo);
