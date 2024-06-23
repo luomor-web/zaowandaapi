@@ -3,7 +3,10 @@ package com.siival.bot.modules.bsc.task;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -64,8 +67,10 @@ public class LilliaFileBatchReadTask extends Task {
         List<LilliaFileDto> lilliaFiles = lilliaFileService.queryAll(lilliaFileQueryCriteria);
 
         LilliaFileDto lilliaFileDto = null;
+        InputStream inStream = null;
         BufferedInputStream inputStream = null;
         URL url = null;
+        URLConnection conn;
         FileOutputStream fileOS = null;
         byte data[] = null;
         String suffix = "";
@@ -92,15 +97,18 @@ public class LilliaFileBatchReadTask extends Task {
                 lilliaFileDto = lilliaFiles.get(i);
 
                 userDir = System.getProperty("user.dir");
+                
                 url = new URL(lilliaFileDto.getFilePath());
-                inputStream = new BufferedInputStream(url.openStream());
+                //inputStream = new BufferedInputStream(url.openStream());
+                conn = url.openConnection();
+                inStream = conn.getInputStream();
 
                 suffix = RegexUtil.parseSuffix(lilliaFileDto.getFilePath());
                 String fileName = userDir + "/fileName" + CharUtil.getRandomString(6) + "." + suffix;
                 fileOS = new FileOutputStream(fileName);
                 data = new byte[1024];
                 int byteContent;
-                while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
+                while ((byteContent = inStream.read(data, 0, 1024)) != -1) {
                     fileOS.write(data, 0, byteContent);
                 }
                 File localFile = new File(fileName);
