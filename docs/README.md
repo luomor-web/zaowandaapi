@@ -86,6 +86,16 @@ docker run cmd.cat/realpath realpath
 
 ```shell
 cp -r docker/lillia/siival-system/* siival-system/
+
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/domain/QuestionMenu.java siival-system/src/main/java/com/siival/bot/modules/bsc/domain/QuestionMenu.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/repository/QuestionMenuRepository.java siival-system/src/main/java/com/siival/bot/modules/bsc/repository/QuestionMenuRepository.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/rest/QuestionMenuController.java siival-system/src/main/java/com/siival/bot/modules/bsc/rest/QuestionMenuController.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/service/QuestionMenuService.java siival-system/src/main/java/com/siival/bot/modules/bsc/service/QuestionMenuService.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/service/dto/QuestionMenuDto.java siival-system/src/main/java/com/siival/bot/modules/bsc/service/dto/QuestionMenuDto.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/service/dto/QuestionMenuQueryCriteria.java siival-system/src/main/java/com/siival/bot/modules/bsc/service/dto/QuestionMenuQueryCriteria.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/service/impl/QuestionMenuServiceImpl.java siival-system/src/main/java/com/siival/bot/modules/bsc/service/impl/QuestionMenuServiceImpl.java
+cp -r docker/lillia/siival-system/src/main/java/com/siival/bot/modules/bsc/service/mapstruct/QuestionMenuMapper.java siival-system/src/main/java/com/siival/bot/modules/bsc/service/mapstruct/QuestionMenuMapper.java
+
 git checkout siival-system/src/main/java/com/siival/bot/modules/bsc/domain/ExamInfo.java
 git checkout siival-system/src/main/java/com/siival/bot/modules/bsc/domain/ExamMenu.java
 git checkout siival-system/src/main/java/com/siival/bot/modules/bsc/domain/QuestionInfo.java
