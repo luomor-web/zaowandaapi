@@ -48,4 +48,10 @@ public class QuestionMenuDto implements Serializable {
     private Integer pid;
 
     private Integer sort;
+
+     /** chapter_id */
+     private Integer chapterId;
+
+     /** chapter_ratio */
+     private Integer chapterRatio;
 }

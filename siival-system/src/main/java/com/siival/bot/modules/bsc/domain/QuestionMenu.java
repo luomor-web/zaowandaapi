@@ -28,14 +28,14 @@ import java.sql.Timestamp;
 import java.io.Serializable;
 
 /**
-* @website
-* @description /
-* @author mark
-* @date 2022-01-17
-**/
+ * @website
+ * @description /
+ * @author mark
+ * @date 2022-01-17
+ **/
 @Entity
 @Data
-@Table(name="question_menu")
+@Table(name = "question_menu")
 public class QuestionMenu implements Serializable {
 
     @Id
@@ -44,12 +44,12 @@ public class QuestionMenu implements Serializable {
     @ApiModelProperty(value = "ID")
     private Integer id;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "name", nullable = false)
     @NotBlank
     @ApiModelProperty(value = "题目")
     private String name;
 
-    @Column(name = "status",nullable = false)
+    @Column(name = "status", nullable = false)
     @NotNull
     @ApiModelProperty(value = "是否启用")
     private Integer status;
@@ -63,14 +63,26 @@ public class QuestionMenu implements Serializable {
     @UpdateTimestamp
     @ApiModelProperty(value = "更新时间")
     private Timestamp updateTime;
+
     @Column(name = "pid")
     @ApiModelProperty(value = "父级id")
     private Integer pid;
+
     @Column(name = "sort")
     @ApiModelProperty(value = "排序值")
     private Integer sort;
 
-    public void copy(QuestionMenu source){
-        BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
+    @Column(name = "chapter_id", nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "chapter_id")
+    private Integer chapterId;
+
+    @Column(name = "chapter_ratio", nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "chapter_ratio")
+    private Integer chapterRatio;
+
+    public void copy(QuestionMenu source) {
+        BeanUtil.copyProperties(source, this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

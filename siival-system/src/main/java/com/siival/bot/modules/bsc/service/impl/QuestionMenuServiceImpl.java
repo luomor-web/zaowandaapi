@@ -118,6 +118,8 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
             map.put("是否启用", questionMenu.getStatus());
             map.put("创建时间", questionMenu.getCreateTime());
             map.put("更新时间", questionMenu.getUpdateTime());
+            map.put("chapter_id", questionMenu.getChapterId());
+            map.put("chapter_ratio", questionMenu.getChapterRatio());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);
