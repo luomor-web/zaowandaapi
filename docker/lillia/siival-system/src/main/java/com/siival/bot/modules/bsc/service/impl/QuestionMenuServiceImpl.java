@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Peter Zhang
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ import java.util.LinkedHashMap;
 * @website
 * @description 服务实现
 * @author Peter
-* @date 2024-06-03
+* @date 2024-06-26
 **/
 @Service
 @RequiredArgsConstructor
@@ -51,8 +51,8 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
     private final QuestionMenuMapper questionMenuMapper;
 
     @Override
-    public Map<String,Object> queryAll(QuestionMenuQueryCriteria criteria, Pageable pageable) {
-        Page<QuestionMenu> page = questionMenuRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder), pageable);
+    public Map<String,Object> queryAll(QuestionMenuQueryCriteria criteria, Pageable pageable){
+        Page<QuestionMenu> page = questionMenuRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
         return PageUtil.toPage(page.map(questionMenuMapper::toDto));
     }
 
@@ -103,6 +103,8 @@ public class QuestionMenuServiceImpl implements QuestionMenuService {
             map.put("上级标签", questionMenu.getPid());
             map.put("href", questionMenu.getCategory());
             map.put("排序字段", questionMenu.getSort());
+            map.put("chapter_id", questionMenu.getChapterId());
+            map.put("chapter_ratio", questionMenu.getChapterRatio());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Peter Zhang
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import java.io.Serializable;
 * @website
 * @description /
 * @author Peter
-* @date 2024-06-03
+* @date 2024-06-26
 **/
 @Entity
 @Data
@@ -72,6 +72,16 @@ public class QuestionMenu implements Serializable {
     @NotNull
     @ApiModelProperty(value = "排序字段")
     private Integer sort;
+
+    @Column(name = "chapter_id",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "chapter_id")
+    private Integer chapterId;
+
+    @Column(name = "chapter_ratio",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "chapter_ratio")
+    private Integer chapterRatio;
 
     public void copy(QuestionMenu source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

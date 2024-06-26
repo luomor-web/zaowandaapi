@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Peter Zhang
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import java.io.Serializable;
 * @website
 * @description /
 * @author Peter
-* @date 2024-06-03
+* @date 2024-06-26
 **/
 @Data
 public class QuestionMenuDto implements Serializable {
@@ -51,4 +51,10 @@ public class QuestionMenuDto implements Serializable {
 
     /** 排序字段 */
     private Integer sort;
+
+    /** chapter_id */
+    private Integer chapterId;
+
+    /** chapter_ratio */
+    private Integer chapterRatio;
 }

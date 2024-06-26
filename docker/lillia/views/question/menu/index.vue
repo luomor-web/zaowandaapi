@@ -31,6 +31,12 @@
           <el-form-item label="排序字段" prop="sort">
             <el-input v-model="form.sort" style="width: 370px;" />
           </el-form-item>
+          <el-form-item label="chapter_id" prop="chapterId">
+            <el-input v-model="form.chapterId" style="width: 370px;" />
+          </el-form-item>
+          <el-form-item label="chapter_ratio" prop="chapterRatio">
+            <el-input v-model="form.chapterRatio" style="width: 370px;" />
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button type="text" @click="crud.cancelCU">取消</el-button>
@@ -48,6 +54,8 @@
         <el-table-column prop="pid" label="上级标签" />
         <el-table-column prop="category" label="href" />
         <el-table-column prop="sort" label="排序字段" />
+        <el-table-column prop="chapterId" label="chapter_id" />
+        <el-table-column prop="chapterRatio" label="chapter_ratio" />
         <el-table-column v-if="checkPer(['admin','questionMenu:edit','questionMenu:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
@@ -71,7 +79,7 @@ import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { id: null, name: null, status: null, createTime: null, updateTime: null, pid: null, category: null, sort: null }
+const defaultForm = { id: null, name: null, status: null, createTime: null, updateTime: null, pid: null, category: null, sort: null, chapterId: null, chapterRatio: null }
 export default {
   name: 'QuestionMenu',
   components: { pagination, crudOperation, udOperation },
@@ -98,6 +106,12 @@ export default {
         ],
         sort: [
           { required: true, message: '排序字段不能为空', trigger: 'blur' }
+        ],
+        chapterId: [
+          { required: true, message: 'chapter_id不能为空', trigger: 'blur' }
+        ],
+        chapterRatio: [
+          { required: true, message: 'chapter_ratio不能为空', trigger: 'blur' }
         ]
       }    }
   },

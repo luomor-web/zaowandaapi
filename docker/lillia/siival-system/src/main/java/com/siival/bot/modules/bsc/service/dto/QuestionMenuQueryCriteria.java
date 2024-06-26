@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Peter Zhang
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import com.siival.bot.annotation.Query;
 /**
 * @website
 * @author Peter
-* @date 2024-06-03
+* @date 2024-06-26
 **/
 @Data
 public class QuestionMenuQueryCriteria{
