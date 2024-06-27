@@ -57,6 +57,6 @@ cp -r docker/lillia/views/lillia/file/*.js ../eladmin-web/src/api
 #git commit -a -m 'update'
 #git push -u origin master
 cd ../eladmin-web
-git add .
-git commit -a -m 'update'
-git push -u origin master
+#git add .
+#git commit -a -m 'update'
+#git push -u origin master
