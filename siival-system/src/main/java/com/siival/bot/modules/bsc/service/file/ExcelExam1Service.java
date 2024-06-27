@@ -67,11 +67,12 @@ public class ExcelExam1Service implements FileBaseService {
         questionMenuId = lilliaFileBatchDto.getQuestionMenuId();
         criteriaMenu = new QuestionMenuQueryCriteria();
         criteriaMenu.setPid(questionMenuId);
-        Map<Integer, QuestionMenuDto> map = new HashMap<>();
+        Map<Integer, QuestionMenuDto> questionMenuMap = new HashMap<>();
         List<QuestionMenuDto> questionMenuDto = questionMenuService.queryAll(criteriaMenu);
         for(int i = 0 ; i < questionMenuDto.size() ; i++) {
-            map.put(questionMenuDto.get(i).getChapterId(), questionMenuDto.get(i));
+            questionMenuMap.put(questionMenuDto.get(i).getChapterId(), questionMenuDto.get(i));
         }
+        logger.info("读取文件信息---批次读取---questionMenuMap---" + JacksonUtil.toJson(questionMenuMap));
 
         for(int j = 0 ; j < list.size() ; j++) {
             exam1 = list.get(j);
@@ -89,13 +90,16 @@ public class ExcelExam1Service implements FileBaseService {
             }
             chapter = exam1.getChatper();
             chapters = chapter.split(".");
+            logger.info("读取文件信息---批次读取---chapters---" + JacksonUtil.toJson(chapters));
             if(chapters.length > 0) {
                 chapterId = Integer.valueOf(chapters[0]);
             } else {
                 chapterId = 0;
             }
-            if(map.containsKey(chapterId)) {
-                pid = map.get(chapterId).getId();
+            if(questionMenuMap.containsKey(chapterId)) {
+                pid = questionMenuMap.get(chapterId).getId();
+            } else {
+                pid = lilliaFileBatchDto.getQuestionMenuId();
             }
             
             criteria = new QuestionInfoQueryCriteria();
