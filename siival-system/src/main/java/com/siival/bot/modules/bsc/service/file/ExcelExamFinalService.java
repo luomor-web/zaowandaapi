@@ -89,8 +89,8 @@ public class ExcelExamFinalService implements FileBaseService {
                         analysis = exam1.getExplain();
                     } else {
                         analysis = exam1.getChatper();
-                        chapter = exam1.getChatper();
                     }
+                    chapter = exam1.getChatper();
                 } else {
                     if(!StringUtils.isEmpty(exam1.getQuestion())) {
                         data.add(exam1.getQuestion());
