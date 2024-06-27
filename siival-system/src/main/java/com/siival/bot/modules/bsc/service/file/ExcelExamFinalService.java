@@ -89,6 +89,7 @@ public class ExcelExamFinalService implements FileBaseService {
                         analysis = exam1.getExplain();
                     } else {
                         analysis = exam1.getChatper();
+                        chapter = exam1.getChatper();
                     }
                 } else {
                     if(!StringUtils.isEmpty(exam1.getQuestion())) {
@@ -106,7 +107,7 @@ public class ExcelExamFinalService implements FileBaseService {
                 selectListInfo.setTitle(data.get(i).replace("\n", ""));
                 selectListInfoList.add(selectListInfo);
             }
-            chapter = exam1.getChatper();
+            
             chapters = chapter.split("\\.");
             logger.info("读取文件信息---批次读取---chapters---" + JacksonUtil.toJson(chapters));
             if(chapters.length > 0) {
