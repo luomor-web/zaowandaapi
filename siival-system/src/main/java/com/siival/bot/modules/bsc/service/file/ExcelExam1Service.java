@@ -89,7 +89,7 @@ public class ExcelExam1Service implements FileBaseService {
                 selectListInfoList.add(selectListInfo);
             }
             chapter = exam1.getChatper();
-            chapters = chapter.split(".");
+            chapters = chapter.split("\\.");
             logger.info("读取文件信息---批次读取---chapters---" + JacksonUtil.toJson(chapters));
             if(chapters.length > 0) {
                 chapterId = Integer.valueOf(chapters[0]);

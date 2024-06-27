@@ -13,7 +13,8 @@ public class Test1 {
     @Test
     public void testChapter() {
         String chapter = "1.1.1";
-        System.out.println(chapter.split("."));
+        String[] chapters = chapter.split("\\.");
+        System.out.println(chapters[0]);
     }
 
 }
