@@ -108,6 +108,7 @@ public class ExcelExamFinalService implements FileBaseService {
                 selectListInfoList.add(selectListInfo);
             }
             
+            logger.info("读取文件信息---批次读取---chapter---" + chapter);
             chapters = chapter.split("\\.");
             logger.info("读取文件信息---批次读取---chapters---" + JacksonUtil.toJson(chapters));
             if(chapters.length > 0) {
