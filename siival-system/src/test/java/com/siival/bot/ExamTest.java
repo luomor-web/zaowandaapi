@@ -24,4 +24,11 @@ public class ExamTest {
     public void testExamTemp() {
         examTempService.handlerExamTemp();
     }
+
+    @Test
+    public void testChapter() {
+        String chapter = "1.1.1";
+        System.out.println(chapter.split("."));
+    }
 }
+
